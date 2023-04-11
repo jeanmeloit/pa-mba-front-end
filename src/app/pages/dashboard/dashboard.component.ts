@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
-import { tap } from 'rxjs/operators'
-
-import { DashboardService } from './dashboard.service'
 
 @Component({
   selector: 'pds-dashboard',
@@ -12,14 +9,14 @@ import { DashboardService } from './dashboard.service'
 export class DashboardComponent implements OnInit {
   public users$: Observable<any[]>
   public loading: boolean = false
-  constructor(private service: DashboardService) {}
+  constructor() {}
 
   public ngOnInit(): void {
-    this.fetchData()
+    // this.fetchData()
   }
 
-  public fetchData(): void {
-    this.loading = true
-    this.users$ = this.service.get().pipe(tap(() => (this.loading = false)))
-  }
+  // public fetchData(): void {
+  //   this.loading = true
+  //   this.users$ = this.service.get().pipe(tap(() => (this.loading = false)))
+  // }
 }

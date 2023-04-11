@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 
 @Component({
-  selector: 'pds-examples',
+  selector: 'pds-person',
   template: `<router-outlet></router-outlet>`,
 })
-export class ExamplesComponent {}
+export class PersonComponent {}

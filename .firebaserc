@@ -5,7 +5,7 @@
   "targets": {
     "panther-checkin-control": {
       "hosting": {
-        "pds-boilerplate": [
+        "pa-mba-front-end": [
           "panther-checkin-control"
         ]
       }

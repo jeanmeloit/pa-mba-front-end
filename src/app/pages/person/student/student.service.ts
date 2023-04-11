@@ -5,7 +5,7 @@ import { BaseService } from '@commons/services/base/base.service'
 @Injectable({
   providedIn: 'root',
 })
-export class DashboardService extends BaseService<any, any> {
+export class StudentService extends BaseService<any, any> {
   constructor(http: HttpClient) {
     super(http, 'person')
   }

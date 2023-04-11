@@ -2,9 +2,9 @@ import { Configuration } from './configuration.interface'
 
 export const DefaultConfiguration: Configuration = {
   app: {
-    name: 'Panther DS',
-    title: 'Panther DS',
-    aboutTitle: 'Sobre o Panther Design System',
+    name: 'Checkin control',
+    title: 'Checkin control',
+    aboutTitle: 'Sobre o projeto aplicado para o MBA front end XPE',
     sidebar: {
       left: false,
       right: true,
@@ -14,7 +14,7 @@ export const DefaultConfiguration: Configuration = {
     },
   },
   header: {
-    title: 'Panther DS',
+    title: 'Checkin control',
     showNotifications: true,
     showFavorites: true,
     showNewWindow: true,
@@ -29,22 +29,22 @@ export const DefaultConfiguration: Configuration = {
         value: 'dark',
         name: 'Escuro',
       },
-      {
-        value: 'cosmic',
-        name: 'Cósmico',
-      },
-      {
-        value: 'corporate',
-        name: 'Corporativo',
-      },
-      {
-        value: 'material-light',
-        name: 'Material',
-      },
-      {
-        value: 'material-dark',
-        name: 'Material escuro',
-      },
+      // {
+      //   value: 'cosmic',
+      //   name: 'Cósmico',
+      // },
+      // {
+      //   value: 'corporate',
+      //   name: 'Corporativo',
+      // },
+      // {
+      //   value: 'material-light',
+      //   name: 'Material',
+      // },
+      // {
+      //   value: 'material-dark',
+      //   name: 'Material escuro',
+      // },
     ],
     userMenu: [
       // { title: 'Perfil', icon: { icon: 'user', pack: 'fas' } },
@@ -61,22 +61,22 @@ export const DefaultConfiguration: Configuration = {
             data: 'dark',
             title: 'Escuro',
           },
-          {
-            data: 'cosmic',
-            title: 'Cósmico',
-          },
-          {
-            data: 'corporate',
-            title: 'Corporativo',
-          },
-          {
-            data: 'material-light',
-            title: 'Material',
-          },
-          {
-            data: 'material-dark',
-            title: 'Material escuro',
-          },
+          // {
+          //   data: 'cosmic',
+          //   title: 'Cósmico',
+          // },
+          // {
+          //   data: 'corporate',
+          //   title: 'Corporativo',
+          // },
+          // {
+          //   data: 'material-light',
+          //   title: 'Material',
+          // },
+          // {
+          //   data: 'material-dark',
+          //   title: 'Material escuro',
+          // },
         ],
       },
       {
@@ -97,26 +97,26 @@ export const DefaultConfiguration: Configuration = {
         title: 'Escuro',
         icon: 'moon',
       },
-      {
-        data: 'cosmic',
-        title: 'Cósmico',
-        icon: { icon: 'meteor', pack: 'fas' },
-      },
-      {
-        data: 'corporate',
-        title: 'Corporativo',
-        icon: { icon: 'landmark', pack: 'fas' },
-      },
-      {
-        data: 'material-light',
-        title: 'Material',
-        icon: 'sun-outline',
-      },
-      {
-        data: 'material-dark',
-        title: 'Material escuro',
-        icon: 'moon-outline',
-      },
+      // {
+      //   data: 'cosmic',
+      //   title: 'Cósmico',
+      //   icon: { icon: 'meteor', pack: 'fas' },
+      // },
+      // {
+      //   data: 'corporate',
+      //   title: 'Corporativo',
+      //   icon: { icon: 'landmark', pack: 'fas' },
+      // },
+      // {
+      //   data: 'material-light',
+      //   title: 'Material',
+      //   icon: 'sun-outline',
+      // },
+      // {
+      //   data: 'material-dark',
+      //   title: 'Material escuro',
+      //   icon: 'moon-outline',
+      // },
     ],
   },
   footer: {

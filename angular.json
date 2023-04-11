@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pds-boilerplate": {
+    "pa-mba-front-end": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -53,9 +53,7 @@
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "./node_modules"
-              ]
+              "includePaths": ["./node_modules"]
             }
           },
           "configurations": {
@@ -130,18 +128,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pds-boilerplate:build"
+            "browserTarget": "pa-mba-front-end:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pds-boilerplate:build:production"
+              "browserTarget": "pa-mba-front-end:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pds-boilerplate:build"
+            "browserTarget": "pa-mba-front-end:build"
           }
         },
         "test": {
@@ -181,10 +179,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
             "typeCheck": true,
             "exclude": []
           }
@@ -194,14 +189,14 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "pds-boilerplate:build:production",
+            "browserTarget": "pa-mba-front-end:build:production",
             "firebaseProject": "panther-checkin-control",
             "firebaseHostingSite": "panther-checkin-control"
           }
         }
       }
     },
-    "pds-boilerplate-e2e": {
+    "pa-mba-front-end-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -210,22 +205,20 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "pds-boilerplate:serve"
+            "devServerTarget": "pa-mba-front-end:serve"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": ["e2e/tsconfig.e2e.json"],
             "exclude": []
           }
         }
       }
     }
   },
-  "defaultProject": "pds-boilerplate",
+  "defaultProject": "pa-mba-front-end",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "pds",

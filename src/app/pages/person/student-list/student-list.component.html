@@ -1,0 +1,15 @@
+<pds-default-page
+  [mainTitle]="pageTitle"
+  [spinnerActive]="student.loading"
+  [spinnerStatus]="'info'"
+  [topRightButtonVisible]="true"
+  [topRightButtonIconVisible]="true"
+  [topRightButtonIcon]="'fas fa-sync'"
+  [topRightButtonId]="'update-acting-area-list'"
+  [topRightButtonTitle]="'Atualizar'"
+  (topRightButtonEmitter)="student.fetchGrid()"
+>
+  <ng-container>
+    <pds-student #student></pds-student>
+  </ng-container>
+</pds-default-page>

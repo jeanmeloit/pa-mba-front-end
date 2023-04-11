@@ -23,12 +23,9 @@ import { map, takeUntil } from 'rxjs/operators'
         />
       </a>
       <b>
-        <a
-          href="http://www.equiplano.com.br"
-          target="_blank"
-          [ngStyle]="{ 'text-decoration': 'none' }"
-          >{{ config?.footer?.title }}</a
-        >
+        <a href="#" target="_blank" [ngStyle]="{ 'text-decoration': 'none' }">{{
+          config?.footer?.title
+        }}</a>
       </b>
       {{ year }}
     </span>

@@ -32,7 +32,7 @@ export interface DxFormItemInterface {
   name?: string
   render?: any
   template?: any
-  validationRules?: DxValidatorPattern
+  validationRules?: DxValidatorPattern[]
   visible?: boolean
   visibleIndex?: number
   mode?: string

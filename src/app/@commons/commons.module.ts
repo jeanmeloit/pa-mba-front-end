@@ -53,6 +53,7 @@ import { SanitizePipe } from './pipes/sanitize/sanitize.pipe'
     CpfCnpjPipe,
     SanitizePipe,
     MoneyPipe,
+    PhonePipe,
   ],
   entryComponents: [
     InfoComponent,
