@@ -15,7 +15,6 @@ import {
   NbPopoverDirective,
   NbSidebarService,
 } from '@nebular/theme'
-import { PreLoadService } from '@pages/pre-load.service'
 import { ToastrService } from '@services/toastr/toastr.service'
 import { Subject } from 'rxjs'
 import { debounceTime, takeUntil } from 'rxjs/operators'
@@ -81,7 +80,6 @@ export class PagesComponent implements OnInit, OnDestroy {
     private menuService: NbMenuService,
     private sidebarService: NbSidebarService,
     private layoutService: LayoutService,
-    private preLoadService: PreLoadService,
     private swUpdate: SwUpdate,
     private appRef: ApplicationRef,
     private dialogService: NbDialogService,
@@ -92,7 +90,6 @@ export class PagesComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.initializeFavoritesControl()
-    this.preLoadData()
     this.collapseSideBar()
   }
 
@@ -205,10 +202,6 @@ export class PagesComponent implements OnInit, OnDestroy {
           this.popover.show()
         }
       })
-  }
-
-  private preLoadData(): void {
-    this.preLoadService.doLoad()
   }
 
   private collapseSideBar(): void {

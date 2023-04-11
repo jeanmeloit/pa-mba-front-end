@@ -131,9 +131,9 @@ export const DefaultConfiguration: Configuration = {
     twitterLink: '#',
   },
   enviroment: {
-    dev: '',
-    homolog: '',
-    prod: '',
+    dev: 'http://localhost:3000',
+    homolog: 'http://localhost:3000',
+    prod: 'https://panther-checkin-control.web.app',
   },
   backoffice: {
     dev: '',

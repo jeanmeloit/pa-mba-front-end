@@ -10,6 +10,7 @@
     "build:dev": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration=dev",
     "build:homolog": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration=homolog",
     "build:prod": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration=production",
+    "deploy:firebase": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration=production && firebase deploy --only hosting",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
     "lint": "ng lint",

@@ -9,7 +9,6 @@ import { TextMaskModule } from 'angular2-text-mask'
 import { ConfirmationComponent } from './dialogs/confirmation/confirmation.component'
 import { InfoComponent } from './dialogs/info/info.component'
 import { ListaSelecaoComponent } from './dialogs/lista-selecao/lista-selecao.component'
-import { PersonSearchComponent } from './dialogs/person-search/person-search.component'
 import { SearchDialogComponent } from './dialogs/search-dialog/search-dialog.component'
 import { ViewPdfComponent } from './dialogs/view-pdf/view-pdf.component'
 import { CpfCnpjPipe } from './pipes/cpf-cnpj/cpf-cnpj.pipe'
@@ -29,7 +28,6 @@ import { SanitizePipe } from './pipes/sanitize/sanitize.pipe'
     SafeHtmlPipe,
     SanitizePipe,
     MoneyPipe,
-    PersonSearchComponent,
     SearchDialogComponent,
   ],
   imports: [

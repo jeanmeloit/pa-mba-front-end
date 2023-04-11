@@ -7,13 +7,9 @@ import {
   HttpRequest,
 } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
 import { environment } from '@environments/environment'
-import { UserDataService } from '@guards/services/user-data.service'
 import { LoadingService } from '@services/loading/loading.service'
-import {
-  ToastrMessageInterface,
-} from '@services/toastr/interfaces/toastr-message'
+import { ToastrMessageInterface } from '@services/toastr/interfaces/toastr-message'
 import { ToastrService } from '@services/toastr/toastr.service'
 import deepCleaner from 'deep-cleaner'
 import { Observable, of, throwError } from 'rxjs'
@@ -25,9 +21,7 @@ export class APIInterceptor implements HttpInterceptor {
 
   constructor(
     private loadingService: LoadingService,
-    private userService: UserDataService,
     private toastr: ToastrService,
-    private router: Router,
   ) {
     this.BASE_URL = environment.url
   }
@@ -37,55 +31,6 @@ export class APIInterceptor implements HttpInterceptor {
   }
 
   public getRequest(req: HttpRequest<any>): HttpRequest<any> {
-    const userData = this.userService.userData
-    let headers: any = {
-      'x-permission': 'false',
-      'x-encryption': 'false',
-      'x-validate': 'false',
-    }
-    if (userData.token) {
-      headers = {
-        ...headers,
-        authorization: userData.token,
-      }
-    }
-
-    if (userData.entidadeUuid) {
-      headers = {
-        ...headers,
-        'x-entity-uuid': userData.entidadeUuid,
-      }
-    } else {
-      this.toastr.send({
-        warning: true,
-        message:
-          'Suas informações de login expiraram, você será redirecionado para página de login dentro de 3 segundos!',
-      })
-      setTimeout(() => {
-        this.userService.crossClientDel('userData')
-        this.userService.crossClientDel('jwtToken')
-        localStorage.removeItem('preLoad')
-      }, 3000)
-    }
-
-    if (userData.exercicio) {
-      headers = {
-        ...headers,
-        'x-exercise': userData.exercicio,
-      }
-    } else {
-      this.toastr.send({
-        warning: true,
-        message:
-          'Suas informações de login expiraram, você será redirecionado para página de login dentro de 3 segundos!',
-      })
-      setTimeout(() => {
-        this.userService.crossClientDel('userData')
-        this.userService.crossClientDel('jwtToken')
-        localStorage.removeItem('preLoad')
-      }, 3000)
-    }
-
     if (req.body) {
       deepCleaner(req.body)
       deepCleaner(req.body)
@@ -94,7 +39,6 @@ export class APIInterceptor implements HttpInterceptor {
     return req.clone({
       url: `${this.BASE_URL}/${req.url}`,
       withCredentials: true,
-      setHeaders: headers,
       params: this.handleParams(req.params),
     })
   }
