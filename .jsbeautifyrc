@@ -1,0 +1,13 @@
+{
+  "html": {
+    "indent_with_tabs": false,
+    "indent_size": 2,
+    "max_preserve_newlines": 2,
+    "preserve_newlines": true,
+    "indent_inner_html": true,
+    "wrap_attributes": "force-expand-multiline",
+    "wrap_line_length": 80,
+    "end_with_newline": true,
+    "brace_style": "end-expand,preserve-inline"
+  }
+}

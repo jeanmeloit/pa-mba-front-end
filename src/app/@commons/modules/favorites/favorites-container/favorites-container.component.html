@@ -1,0 +1,64 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-md-10">
+        <h5>
+          {{ containerTitle }}
+        </h5>
+      </div>
+      <div class="col-md-2">
+        <button
+          [appearance]="topRightButtonAppearance"
+          [status]="topRightButtonType"
+          [shape]="topRightButtonSize"
+          [size]="topRightButtonSize"
+          id="{{ topRightButtonId }}"
+          [title]="'Limpar lista de favoritos'"
+          class="float-right ml-2"
+          nbButton
+          (click)="clean()"
+          [disabled]="favorites?.length <= 0"
+        >
+          <i [ngClass]="'fas fa-eraser'"></i>
+        </button>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <ng-container>
+      <div class="row">
+        <div
+          class="col-md-4 mb-2 pointer"
+          *ngFor="let favorite of favorites"
+          [routerLink]="[favorite?.link]"
+        >
+          <div
+            class="row pointer"
+            title="{{ favorite.completeTitle }}"
+          >
+            <div class="col-md-12 mb-1 flex-favorite-item">
+              <nb-icon
+                [pack]="favorite.icon?.pack"
+                [icon]="favorite.icon?.icon"
+                [ngStyle]="{'font-size': '2rem !important'}"
+                status="primary"
+              ></nb-icon>
+            </div>
+            <div
+              class="col-md-12"
+              [ngStyle]="{'text-align': 'center'}"
+            >
+              <span>{{ favorite.title }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="favorites?.length <= 0">
+      <div class="nothing-to-see-container">
+        <img src="assets/img/favorites-not-found-ppl.png">
+      </div>
+    </ng-container>
+
+  </nb-card-body>
+</nb-card>

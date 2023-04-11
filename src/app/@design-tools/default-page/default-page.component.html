@@ -1,0 +1,149 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card
+      [nbSpinner]="spinnerActive"
+      [nbSpinnerStatus]="spinnerStatus"
+      [nbSpinnerSize]="spinnerSize"
+      [nbSpinnerMessage]="spinnerMessage"
+    >
+      <nb-card-header>
+        <div class="row">
+          <div class="col-md-8">
+            <h5>{{ mainTitle }}</h5>
+          </div>
+          <div class="col-md-4">
+            <button
+              *ngIf="topRightButtonVisible"
+              [appearance]="topRightButtonAppearance"
+              [status]="topRightButtonType"
+              [shape]="topRightButtonSize"
+              [size]="topRightButtonSize"
+              [disabled]="topRightButtonDisabled"
+              id="{{ topRightButtonId }}"
+              title="{{ topRightButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="topRightButtonClick()"
+            >
+              <i
+                *ngIf="topRightButtonIconVisible"
+                [ngClass]="{'mr-1': topRightButtonText}"
+                class="{{ topRightButtonIcon }}"
+              ></i>
+              {{ topRightButtonText }}
+            </button>
+          </div>
+        </div>
+        <!-- <hr> -->
+
+      </nb-card-header>
+      <nb-card-body>
+        <br>
+        <ng-content></ng-content>
+        <br>
+        <!-- <hr *ngIf="bottomDivisorVisible"> -->
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="row">
+          <div class="col-md-4">
+            <button
+              *ngIf="bottomLeftButtonVisible"
+              [appearance]="bottomLeftButtonAppearance"
+              [status]="bottomLeftButtonType"
+              [shape]="bottomLeftButtonSize"
+              [size]="bottomLeftButtonSize"
+              [disabled]="bottomLeftButtonDisabled"
+              id="{{ bottomLeftButtonId }}"
+              title="{{ bottomLeftButtonTitle }}"
+              class="float-left ml-2"
+              nbButton
+              (click)="bottomLeftButtonClick()"
+            >
+              <i
+                *ngIf="bottomLeftButtonIconVisible"
+                [ngClass]="{'mr-1': bottomLeftButtonText}"
+                class="{{ bottomLeftButtonIcon }}"
+              ></i>
+              {{ bottomLeftButtonText }}
+            </button>
+          </div>
+          <div class="col-md-8">
+            <button
+              *ngIf="rightApproveButtonVisible"
+              [appearance]="rightApproveButtonAppearance"
+              [status]="rightApproveButtonType"
+              [shape]="rightApproveButtonSize"
+              [size]="rightApproveButtonSize"
+              [disabled]="rightApproveButtonDisabled"
+              id="{{ rightApproveButtonId }}"
+              title="{{ rightApproveButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightApproveButtonClick()"
+            >
+              <i
+                *ngIf="rightApproveButtonIconVisible"
+                class="mr-1 {{ rightApproveButtonIcon }}"
+              ></i>
+              {{ rightApproveButtonText }}
+            </button> <button
+              *ngIf="rightDenyButtonVisible"
+              [appearance]="rightDenyButtonAppearance"
+              [status]="rightDenyButtonType"
+              [shape]="rightDenyButtonSize"
+              [size]="rightDenyButtonSize"
+              [disabled]="rightDenyButtonDisabled"
+              id="{{ rightDenyButtonId }}"
+              title="{{ rightDenyButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightDenyButtonClick()"
+            >
+              <i
+                *ngIf="rightDenyButtonIconVisible"
+                class="mr-1 {{ rightDenyButtonIcon }}"
+              ></i>
+              {{ rightDenyButtonText }}
+            </button> <button
+              *ngIf="rightCustomButtonVisible"
+              [appearance]="rightCustomButtonAppearance"
+              [status]="rightCustomButtonType"
+              [shape]="rightCustomButtonSize"
+              [size]="rightCustomButtonSize"
+              [disabled]="rightCustomButtonDisabled"
+              id="{{ rightCustomButtonId }}"
+              title="{{ rightCustomButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightCustomButtonClick()"
+            >
+              <i
+                *ngIf="rightCustomButtonIconVisible"
+                class="mr-1 {{ rightCustomButtonIcon }}"
+              ></i>
+              {{ rightCustomButtonText }}
+            </button> <button
+              *ngIf="rightAnotherButtonVisible"
+              [appearance]="rightAnotherButtonAppearance"
+              [status]="rightAnotherButtonType"
+              [shape]="rightAnotherButtonSize"
+              [size]="rightAnotherButtonSize"
+              [disabled]="rightAnotherButtonDisabled"
+              id="{{ rightAnotherButtonId }}"
+              title="{{ rightAnotherButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightAnotherButtonClick()"
+            >
+              <i
+                *ngIf="rightAnotherButtonIconVisible"
+                class="mr-1 {{ rightAnotherButtonIcon }}"
+              ></i>
+              {{ rightAnotherButtonText }}
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

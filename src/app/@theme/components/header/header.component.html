@@ -1,0 +1,149 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a
+      href="#"
+      class="sidebar-toggle"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      (click)="toggleSidebar()"
+    >
+      <nb-icon
+        [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"
+      ></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()">
+      <img
+        class="img-logo"
+        [src]="
+          currentTheme === 'dark' ||
+          currentTheme === 'cosmic' ||
+          currentTheme === 'material-light' ||
+          currentTheme === 'material-dark'
+            ? 'assets/img/white-logo.png'
+            : 'assets/img/default-logo.png'
+        "
+      /><span>{{ headerTitle }}</span>
+    </a>
+  </div>
+</div>
+
+<div class="header-container">
+  <nb-actions size="small">
+    <nb-action class="control-item">
+      <nb-search
+        type="rotate-layout"
+        matRipple
+        placeholder="Itens do menu"
+        hint="ENTER para buscar"
+        [matRippleUnbounded]="true"
+        [matRippleCentered]="true"
+      ></nb-search>
+    </nb-action>
+
+    <nb-action
+      *ngIf="config?.header?.showFavorites"
+      class="control-item"
+      title="Favoritos"
+      [icon]="{ icon: 'star-outline', pack: 'eva' }"
+      [nbPopover]="favorites"
+      nbPopoverPlacement="bottom"
+      nbPopoverTrigger="click"
+      [badgeText]="getFavoritesLength()"
+      badgePosition="bottom right"
+      badgeStatus="primary"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+    >
+    </nb-action>
+    <ng-template #favorites>
+      <pds-favorites-container [containerTitle]="'Favoritos'">
+      </pds-favorites-container>
+    </ng-template>
+
+    <nb-action
+      *ngIf="config?.header?.showNotifications"
+      class="control-item"
+      title="Notificações"
+      [icon]="{ icon: 'bell-outline', pack: 'eva' }"
+      [nbPopover]="notifications"
+      nbPopoverPlacement="bottom"
+      nbPopoverTrigger="click"
+      [badgeText]="notificationsData?.avisosNaoLidos.length"
+      badgePosition="bottom right"
+      badgeStatus="primary"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+    >
+    </nb-action>
+    <ng-template #notifications>
+      <pds-notifications-container
+        [containerTitle]="'Notificações'"
+        [notificationsData]="notificationsData"
+        (readed)="setAsRead($event)"
+      ></pds-notifications-container>
+    </ng-template>
+
+    <nb-action
+      *ngIf="config?.header?.showThemeSelector"
+      class="control-item"
+      title="Temas"
+      icon="color-palette-outline"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      [nbContextMenu]="themeMenu"
+    ></nb-action>
+
+    <nb-action
+      *ngIf="config?.header?.showNewWindow"
+      class="control-item"
+      title="Nova janela"
+      [icon]="{ icon: 'browser-outline', pack: 'eva' }"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      (click)="newWindow()"
+    ></nb-action>
+
+    <nb-action
+      *ngIf="config?.header?.showSystemSelector"
+      class="control-item-outlist"
+      title="Navegação entre sistemas"
+      [icon]="{ icon: 'grid-outline', pack: 'eva' }"
+      [nbPopover]="systems"
+      nbPopoverPlacement="bottom"
+      nbPopoverTrigger="click"
+      [badgeText]="notificationsData?.avisosNaoLidos.length"
+      badgePosition="bottom right"
+      badgeStatus="primary"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+    >
+    </nb-action>
+    <ng-template #systems>
+      <pds-system-container [containerTitle]="'Sistemas'">
+      </pds-system-container>
+    </ng-template>
+
+    <nb-action
+      class="user-action"
+      *nbIsGranted="['view', 'user']"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+    >
+      <nb-user
+        [nbContextMenu]="userMenu"
+        [onlyPicture]="userPictureOnly"
+        [showInitials]="true"
+        [name]="'Panther DS'"
+      >
+        <!-- [picture]="user?.picture" -->
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>

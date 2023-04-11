@@ -1,0 +1,31 @@
+nb-card {
+  min-width: 20vw;
+  max-width: 30vw;
+  max-height: 50vh;
+  margin-bottom: 0;
+  border: none;
+}
+
+nb-icon {
+  font-size: 2rem !important;
+
+  &:hover {
+    font-size: 2.3rem !important;
+    transition: all 0.3s;
+  }
+}
+
+.flex-favorite-item {
+  display: flex;
+  justify-content: center;
+}
+
+.nothing-to-see-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+
+  & img {
+    width: 2vw;
+  }
+}

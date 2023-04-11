@@ -1,0 +1,37 @@
+@import 'src/assets/scss/variables';
+
+:host {
+  background: $white-alpha-05;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  user-select: none;
+  z-index: 1000;
+}
+
+span {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: 31px;
+  width: 31px;
+}
+
+// LEGACY LOADER
+// img {
+//   height: 26.5px;
+// }
+
+// NEW LOADER
+img {
+  height: 40px;
+}
+
+i {
+  color: $blue-light;
+  font-size: 22pt;
+}

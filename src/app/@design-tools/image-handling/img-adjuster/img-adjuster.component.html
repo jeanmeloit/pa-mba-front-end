@@ -1,0 +1,29 @@
+<pds-nebular-dialog
+  [dialogTitle]="dialogTitle"
+  [dialogSize]="adjusterSize"
+  [headerVisible]="false"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [bottomLeftButtonText]="backText"
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="backIcon"
+  [bottomLeftButtonId]="'dispose-image-adjuster-dialog'"
+  [bottomLeftButtonTitle]="backText"
+  [bottomLeftButtonDisabled]="false"
+  (bottomLeftButtonEmitter)="dispose()"
+  [rightFirstButtonText]="confirmText"
+  [rightFirstButtonVisible]="true"
+  [rightFirstButtonIconVisible]="true"
+  [rightFirstButtonIcon]="confirmIcon"
+  [rightFirstButtonId]="'confirm-image-cropping'"
+  [rightFirstButtonTitle]="confirmText"
+  [rightFirstButtonDisabled]="false"
+  (rightFirstButtonEmitter)="confirm()"
+>
+  <ng-container #cropperInstance>
+    <div class="img-container">
+      <img #image [src]="originalImage?.url" crossorigin />
+    </div>
+  </ng-container>
+</pds-nebular-dialog>

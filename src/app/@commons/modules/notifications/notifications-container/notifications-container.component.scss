@@ -1,0 +1,29 @@
+@import 'src/assets/scss/variables';
+
+.read-button:hover {
+  color: $nb-marker-success;
+}
+
+.nothing-to-see-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem !important;
+
+  & img {
+    width: 2vw;
+  }
+}
+
+nb-card {
+  min-width: 20vw;
+  max-height: 50vh;
+  margin-bottom: 0;
+  border: none;
+}
+
+nb-list-item:first-child {
+  border-top: none;
+}
+nb-list-item:last-child {
+  border-bottom: none;
+}

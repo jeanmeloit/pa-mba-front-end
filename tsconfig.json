@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "importHelpers": true,
+    "module": "es2020",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "target": "es2020",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "plugins": [{ "name": "tslint-language-service" }],
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "*": ["types/*"],
+      "@angular/*": ["../node_modules/@angular/*"],
+      "@nebular/*": ["../node_modules/@nebular/*"],
+      "@src/*": ["./*"],
+      "@theme/*": ["app/@theme/*"],
+      "@core/*": ["app/@core/*"],
+      "@commons/*": ["app/@commons/*"],
+      "@dialogs/*": ["app/@commons/dialogs/*"],
+      "@interfaces/*": ["app/@commons/interfaces/*"],
+      "@pipes/*": ["app/@commons/pipes/*"],
+      "@services/*": ["app/@commons/services/*"],
+      "@misc/*": ["app/@commons/misc/*"],
+      "@systems-id/*": ["app/@commons/systems-id/*"],
+      "@design-tools/*": ["app/@design-tools/*"],
+      "@favorites/*": ["app/@commons/modules/favorites/*"],
+      "@guards/*": ["app/guards/*"],
+      "@notifications/*": ["app/@commons/modules/notifications/*"],
+      "@system-selector/*": ["app/@commons/modules/system-selector/*"],
+      "@pages/*": ["app/pages/*"],
+      "@environments/*": ["environments/*"],
+      "jszip": ["node_modules/jszip/dist/jszip.min.js"]
+    }
+  }
+}

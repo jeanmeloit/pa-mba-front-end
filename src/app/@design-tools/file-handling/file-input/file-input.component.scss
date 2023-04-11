@@ -1,0 +1,44 @@
+li,
+img {
+  float: left;
+  max-width: 80px;
+  position: relative;
+}
+
+span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove {
+  cursor: pointer;
+  font-size: 12pt;
+  position: absolute;
+  right: 0;
+  top: -8px;
+  transition: 0.3s ease-in-out;
+  z-index: 50;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.square-1px {
+  float: left;
+  max-height: 1px;
+  max-width: 1px;
+  overflow: hidden;
+}
+
+@media print {
+  img {
+    display: none !important;
+  }
+
+  span {
+    overflow: unset;
+    text-overflow: unset;
+  }
+}

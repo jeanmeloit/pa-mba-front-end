@@ -1,0 +1,24 @@
+@import 'bootstrap/scss/mixins/breakpoints';
+@import '@nebular/theme/styles/global/breakpoints';
+
+.pdr-toggle {
+  padding-right: 60vw;
+}
+
+@include media-breakpoint-down(xl) {
+  .pdr-toggle {
+    padding-right: 55vw;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .pdr-toggle {
+    padding-right: 45vw;
+  }
+}
+
+@include media-breakpoint-down(is) {
+  .pdr-toggle {
+    padding-right: 10vw;
+  }
+}

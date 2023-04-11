@@ -1,0 +1,138 @@
+{
+    "items": [
+        {
+            "key": "$base-accent",
+            "value": "rgba(51, 102, 255, 1)"
+        },
+        {
+            "key": "$base-success",
+            "value": "rgba(0, 214, 143, 1)"
+        },
+        {
+            "key": "$base-warning",
+            "value": "rgba(255, 170, 0, 1)"
+        },
+        {
+            "key": "$base-danger",
+            "value": "rgba(255, 61, 113, 1)"
+        },
+        {
+            "key": "$base-hover-color",
+            "value": "rgba(66, 66, 66, 1)"
+        },
+        {
+            "key": "$base-hover-bg",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$base-focus-color",
+            "value": "rgba(0, 0, 0, 0.87)"
+        },
+        {
+            "key": "$base-label-color",
+            "value": "rgba(66, 66, 66, 1)"
+        },
+        {
+            "key": "$datagrid-columnchooser-item-color",
+            "value": "rgba(66, 66, 66, 0.6)"
+        },
+        {
+            "key": "$datagrid-row-selected-color",
+            "value": "rgba(66, 66, 66, 1)"
+        },
+        {
+            "key": "$datagrid-row-focused-color",
+            "value": "rgba(0, 0, 0, 0.87)"
+        },
+        {
+            "key": "$datagrid-group-row-color",
+            "value": "rgba(66, 66, 66, 0.54)"
+        },
+        {
+            "key": "$datagrid-summary-color",
+            "value": "rgba(66, 66, 66, 0.7)"
+        },
+        {
+            "key": "$datagrid-search-color",
+            "value": "rgba(0, 0, 0, 0.87)"
+        },
+        {
+            "key": "$datagrid-selection-bg",
+            "value": "rgba(51, 102, 255, 0.23)"
+        },
+        {
+            "key": "$pivotgrid-area-color",
+            "value": "rgba(66, 66, 66, 0.54)"
+        },
+        {
+            "key": "$base-focus-bg",
+            "value": "rgba(0, 0, 0, 0.07)"
+        },
+        {
+            "key": "$navbar-tab-selected-color",
+            "value": "rgba(51, 102, 255, 1)"
+        },
+        {
+            "key": "$texteditor-bg",
+            "value": "rgba(0, 0, 0, 0)"
+        },
+        {
+            "key": "$texteditor-focused-bg",
+            "value": "rgba(0, 0, 0, 0)"
+        },
+        {
+            "key": "$texteditor-hover-bg",
+            "value": "rgba(0, 0, 0, 0)"
+        },
+        {
+            "key": "$texteditor-border-color",
+            "value": "rgba(228, 233, 242, 1)"
+        },
+        {
+            "key": "$texteditor-hover-border-color",
+            "value": "rgba(0, 0, 0, 0.23)"
+        },
+        {
+            "key": "$scrollable-scroll-bg",
+            "value": "rgba(51, 102, 255, 0.7)"
+        },
+        {
+            "key": "$drawer-shader-background-color",
+            "value": "rgba(51, 102, 255, 0.5)"
+        },
+        {
+            "key": "$accordion-title-color",
+            "value": "rgba(51, 102, 255, 1)"
+        },
+        {
+            "key": "$tooltip-bg",
+            "value": "rgba(51, 102, 255, 1)"
+        },
+        {
+            "key": "$toast-info-bg",
+            "value": "rgba(0, 149, 255, 1)"
+        },
+        {
+            "key": "$button-normal-hover-bg",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$datagrid-menu-icon-color",
+            "value": "rgba(51, 102, 255, 1)"
+        },
+        {
+            "key": "$base-icon-color",
+            "value": "rgba(0, 0, 0, 0.54)"
+        },
+        {
+            "key": "$base-spin-icon-color",
+            "value": "rgba(0, 0, 0, 0.54)"
+        }
+    ],
+    "baseTheme": "material.blue.light.compact",
+    "outputColorScheme": "nebular-light",
+    "makeSwatch": false,
+    "version": "21.2.6",
+    "widgets": [],
+    "removeExternalResources": false
+}

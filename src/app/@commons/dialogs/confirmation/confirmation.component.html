@@ -1,0 +1,51 @@
+<pds-nebular-dialog
+  [dialogTitle]="dialogTitle"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [bottomLeftButtonText]="
+    confirmationContent?.cancelText ? confirmationContent?.cancelText : 'Voltar'
+  "
+  [bottomLeftButtonType]="
+    confirmationContent?.cancelType ? confirmationContent?.cancelType : 'info'
+  "
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="
+    confirmationContent?.cancelIcon
+      ? confirmationContent?.cancelIcon
+      : 'fas fa-undo-alt'
+  "
+  [bottomLeftButtonId]="'dispose-confirmation-dialog'"
+  [bottomLeftButtonTitle]="
+    confirmationContent?.cancelTitle
+      ? confirmationContent?.cancelTitle
+      : 'Voltar'
+  "
+  (bottomLeftButtonEmitter)="dispose()"
+  [rightDenyButtonText]="
+    confirmationContent?.confirmText
+      ? confirmationContent?.confirmText
+      : 'Confirmar'
+  "
+  [rightDenyButtonType]="
+    confirmationContent?.confirmType
+      ? confirmationContent?.confirmType
+      : 'danger'
+  "
+  [rightDenyButtonVisible]="true"
+  [rightDenyButtonIconVisible]="true"
+  [rightDenyButtonIcon]="
+    confirmationContent?.confirmIcon
+      ? confirmationContent?.confirmIcon
+      : 'fas fa-check-circle'
+  "
+  [rightDenyButtonId]="'confirm-entries-selection'"
+  [rightDenyButtonTitle]="
+    confirmationContent?.confirmTitle
+      ? confirmationContent?.confirmTitle
+      : 'Confirmar'
+  "
+  (rightDenyButtonEmitter)="confirm()"
+>
+  <p class="ws-pre-line">{{ confirmationContent?.body }}</p>
+</pds-nebular-dialog>

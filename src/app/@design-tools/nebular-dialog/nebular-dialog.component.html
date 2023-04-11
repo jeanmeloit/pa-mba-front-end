@@ -1,0 +1,155 @@
+<div
+  class="row"
+  [ngClass]="dialogSize"
+>
+  <div class="col-md-12">
+    <nb-card
+      [nbSpinner]="spinnerActive"
+      [nbSpinnerStatus]="spinnerStatus"
+      [nbSpinnerSize]="spinnerSize"
+      [nbSpinnerMessage]="spinnerMessage"
+      [ngStyle]="{'max-height': '90vh'}"
+    >
+      <nb-card-header *ngIf="headerVisible">
+        <div class="row">
+          <div class="col-md-8">
+            <h5>{{ dialogTitle }}</h5>
+          </div>
+          <div class="col-md-4">
+            <button
+              *ngIf="topRightButtonVisible"
+              [appearance]="topRightButtonAppearance"
+              [status]="topRightButtonType"
+              [shape]="topRightButtonSize"
+              [size]="topRightButtonSize"
+              [disabled]="topRightButtonDisabled"
+              id="{{ topRightButtonId }}"
+              title="{{ topRightButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="topRightButtonClick()"
+            >
+              <i
+                *ngIf="topRightButtonIconVisible"
+                [ngClass]="{'mr-1': topRightButtonText}"
+                class="{{ topRightButtonIcon }}"
+              ></i>
+              {{ topRightButtonText }}
+            </button>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <ng-content></ng-content>
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="row">
+          <div class="col-md-6">
+            <button
+              *ngIf="bottomLeftButtonVisible"
+              [appearance]="bottomLeftButtonAppearance"
+              [status]="bottomLeftButtonType"
+              [shape]="bottomLeftButtonSize"
+              [size]="bottomLeftButtonSize"
+              [disabled]="bottomLeftButtonDisabled"
+              id="{{ bottomLeftButtonId }}"
+              title="{{ bottomLeftButtonTitle }}"
+              class="float-left"
+              nbButton
+              (click)="bottomLeftButtonClick()"
+            >
+              <i
+                *ngIf="bottomLeftButtonIconVisible"
+                [ngClass]="{'mr-1': bottomLeftButtonText}"
+                class="{{ bottomLeftButtonIcon }}"
+              ></i>
+              {{ bottomLeftButtonText }}
+            </button>
+          </div>
+
+          <div class="col-md-6">
+            <button
+              *ngIf="rightFirstButtonVisible"
+              [appearance]="rightFirstButtonAppearance"
+              [status]="rightFirstButtonType"
+              [shape]="rightFirstButtonSize"
+              [size]="rightFirstButtonSize"
+              [disabled]="rightFirstButtonDisabled"
+              id="{{ rightFirstButtonId }}"
+              title="{{ rightFirstButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightFirstButtonClick()"
+            >
+              <i
+                *ngIf="rightFirstButtonIconVisible"
+                class="mr-1 {{ rightFirstButtonIcon }}"
+              ></i>
+              {{ rightFirstButtonText }}
+            </button>
+
+            <button
+              *ngIf="rightDenyButtonVisible"
+              [appearance]="rightDenyButtonAppearance"
+              [status]="rightDenyButtonType"
+              [shape]="rightDenyButtonSize"
+              [size]="rightDenyButtonSize"
+              [disabled]="rightDenyButtonDisabled"
+              id="{{ rightDenyButtonId }}"
+              title="{{ rightDenyButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightDenyButtonClick()"
+            >
+              <i
+                *ngIf="rightDenyButtonIconVisible"
+                class="mr-1 {{ rightDenyButtonIcon }}"
+              ></i>
+              {{ rightDenyButtonText }}
+            </button>
+
+            <button
+              *ngIf="rightSecondButtonVisible"
+              [appearance]="rightSecondButtonAppearance"
+              [status]="rightSecondButtonType"
+              [shape]="rightSecondButtonSize"
+              [size]="rightSecondButtonSize"
+              [disabled]="rightSecondButtonDisabled"
+              id="{{ rightSecondButtonId }}"
+              title="{{ rightSecondButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightSecondButtonClick()"
+            >
+              <i
+                *ngIf="rightSecondButtonIconVisible"
+                class="mr-1 {{ rightSecondButtonIcon }}"
+              ></i>
+              {{ rightSecondButtonText }}
+            </button>
+
+            <button
+              *ngIf="rightThirdButtonVisible"
+              [appearance]="rightThirdButtonAppearance"
+              [status]="rightThirdButtonType"
+              [shape]="rightThirdButtonSize"
+              [size]="rightThirdButtonSize"
+              [disabled]="rightThirdButtonDisabled"
+              id="{{ rightThirdButtonId }}"
+              title="{{ rightThirdButtonTitle }}"
+              class="float-right ml-2"
+              nbButton
+              (click)="rightThirdButtonClick()"
+            >
+              <i
+                *ngIf="rightThirdButtonIconVisible"
+                class="mr-1 {{ rightThirdButtonIcon }}"
+              ></i>
+              {{ rightThirdButtonText }}
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

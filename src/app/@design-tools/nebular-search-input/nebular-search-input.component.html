@@ -1,0 +1,22 @@
+<nb-form-field>
+  <input
+    #input
+    [type]="type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [fullWidth]="fullWidth"
+    [fieldSize]="size"
+    [formControl]="control"
+    nbInput
+  />
+  <button
+    [size]="size"
+    [title]="title"
+    nbSuffix
+    nbButton
+    ghost
+    (click)="input.value = null; onButtonClick.emit(true)"
+  >
+    <nb-icon icon="search" pack="eva"> </nb-icon>
+  </button>
+</nb-form-field>

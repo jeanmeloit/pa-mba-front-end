@@ -1,0 +1,18 @@
+<ng-container *ngIf="keywrd">
+  <nb-card [ngStyle]="{'width.px': boxWidth - 25,
+  'overflow-y': isPopover ? null : 'auto',
+  'position': isPopover ? null : 'fixed',
+  'z-index': isPopover ? null : '999'}">
+    <nb-list *ngIf="suggestions && suggestions.length > 0">
+      <nb-list-item
+        *ngFor="let suggestion of suggestions; index as i;"
+        (click)="select(suggestion)"
+      >
+        <span [innerHTML]="suggestion.texto"></span>
+        <ng-container *ngIf="suggestion?.valor && !hideValue">
+          &ngsp;(<span [innerHTML]="suggestion.valor"></span>)
+        </ng-container>
+      </nb-list-item>
+    </nb-list>
+  </nb-card>
+</ng-container>

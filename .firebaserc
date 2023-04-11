@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "panther-checkin-control"
+  },
+  "targets": {
+    "panther-checkin-control": {
+      "hosting": {
+        "pds-boilerplate": [
+          "panther-checkin-control"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="form-control-group flex-control">
+  <label
+    class="label"
+    *ngIf="label && !useNebularLabel"
+    [attr.aria-label]="label"
+    for="{{ name }}"
+  >{{ label }}</label>
+
+  <nb-toggle
+    id="{{name}}"
+    #model="ngModel"
+    [(ngModel)]="currentValue"
+    [name]="name"
+    [status]="status"
+    [disabled]="disabled"
+    [checked]="checked"
+    [labelPosition]="nebularLabelPosition"
+    [ngClass]="{ 'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine }"
+    (ngModelChange)="modelChanged($event)"
+    (click)="clickFunction(this)"
+  >
+    {{ nebularLabel }}
+  </nb-toggle>
+</div>

@@ -1,0 +1,109 @@
+ <nb-card>
+   <nb-card-header>
+     <div class="row">
+       <div class="col-md-10">
+         <h5>
+           {{ showingReaded ? containerTitle + ' | Lidas' : containerTitle }}
+         </h5>
+       </div>
+       <div class="col-md-2">
+         <button
+           [appearance]="topRightButtonAppearance"
+           [status]="topRightButtonType"
+           [shape]="topRightButtonSize"
+           [size]="topRightButtonSize"
+           id="{{ topRightButtonId }}"
+           [title]="showingReaded ? 'Exibir notificações não lidas' : 'Exibir notificações lidas'"
+           class="float-right ml-2"
+           nbButton
+           (click)="showingReaded = !showingReaded"
+         >
+           <i
+             [ngClass]="showingReaded ? 'fas fa-envelope' : 'fas fa-envelope-open-text'"></i>
+         </button>
+       </div>
+     </div>
+   </nb-card-header>
+   <nb-card-body [ngStyle]="{'padding': 0}">
+     <ng-container
+       *ngIf="!showingReaded && notificationsData?.avisosNaoLidos.length > 0"
+     >
+       <nb-list>
+         <nb-list-item *ngFor="let item of notificationsData?.avisosNaoLidos">
+           <div class="col-md-2">
+             <nb-user
+               [onlyPicture]="true"
+               [name]="'Notificação'"
+             >
+             </nb-user>
+           </div>
+           <div class="col-md-10">
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="row mt-1">
+                   <div [ngClass]="'col-md-11'">
+                     <p> <b> Aviso </b> -
+                       {{ item.mensagem }}</p>
+                   </div>
+                   <div class="col-md-1">
+                     <button
+                       [appearance]="topRightButtonAppearance"
+                       [status]="topRightButtonType"
+                       [shape]="topRightButtonShape"
+                       [size]="topRightButtonSize"
+                       id="set-as-read{{ item.idAviso }}"
+                       title="Marcar como lida"
+                       class="float-right mr-n4"
+                       nbButton
+                       (click)="setAsRead(item.idAviso)"
+                     >
+                       <i [ngClass]="'fas fa-check-circle read-button'"></i>
+                     </button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </nb-list-item>
+       </nb-list>
+     </ng-container>
+     <ng-container
+       *ngIf="showingReaded && notificationsData?.avisosLidos.length > 0"
+     >
+       <nb-list>
+         <nb-list-item *ngFor="let item of notificationsData?.avisosLidos">
+           <div class="col-md-2">
+             <nb-user
+               [onlyPicture]="true"
+               [name]="'Notificação'"
+             >
+             </nb-user>
+           </div>
+           <div class="col-md-10">
+             <div class="row mt-1">
+               <div class="col-md-12">
+                 <p> <b> Aviso </b> -
+                   {{ item.mensagem }}</p>
+               </div>
+             </div>
+           </div>
+         </nb-list-item>
+       </nb-list>
+     </ng-container>
+     <ng-container
+       *ngIf="!showingReaded && notificationsData?.avisosNaoLidos.length <= 0"
+     >
+       <div class="nothing-to-see-container">
+         <img src="assets/img/notifications-not-found-ppl.png">
+       </div>
+     </ng-container>
+     <ng-container
+       *ngIf="showingReaded && notificationsData?.avisosLidos.length <= 0"
+     >
+       <div class="nothing-to-see-container">
+         <img src="assets/img/notifications-not-found-ppl.png">
+       </div>
+     </ng-container>
+
+   </nb-card-body>
+ </nb-card>

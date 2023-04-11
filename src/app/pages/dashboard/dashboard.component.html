@@ -1,0 +1,10 @@
+<pds-default-page
+  [mainTitle]="'Panther DS example'"
+  [topRightButtonVisible]="true"
+  [topRightButtonIconVisible]="true"
+  [topRightButtonIcon]="'fas fa-sync'"
+  [spinnerActive]="loading"
+  (topRightButtonEmitter)="fetchData()"
+>
+  <pds-dx-standard-grid [dataSource]="users$ | async"> </pds-dx-standard-grid>
+</pds-default-page>

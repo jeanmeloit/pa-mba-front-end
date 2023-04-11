@@ -1,0 +1,36 @@
+<nb-card>
+  <nb-card-header>Resultado da pesquisa</nb-card-header>
+  <nb-card-body>
+
+    <div class="row overflow-y">
+      <div
+        class="col-md-12 mb-3 pointer"
+        title="{{ item.title }}"
+        *ngFor="let item of result"
+      >
+        <nb-icon
+          [pack]="item.icon?.pack"
+          [icon]="item.icon?.icon"
+          [ngStyle]="{'font-size': '2rem !important'}"
+          status="primary"
+        ></nb-icon>
+        <a
+          (click)="goToSelectedItem(item.link)"
+          class="ml-2"
+        >{{item.title}}</a>
+      </div>
+      <ng-container>
+        <div
+          class="row"
+          *ngIf="result.length <= 0"
+        >
+          <div class="col-md-12">
+            Nenhum resultado encontrado para "{{ searchTerm }}".
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+
+  </nb-card-body>
+</nb-card>

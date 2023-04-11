@@ -1,0 +1,42 @@
+input[type='text'] {
+  float: left;
+  margin-top: 15px;
+}
+
+.square-1px {
+  float: left;
+  max-height: 1px;
+  max-width: 1px;
+  overflow: hidden;
+}
+
+.opacity-0 {
+  opacity: 1;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.no-outline {
+  outline: none;
+}
+
+.file-name {
+  float: right;
+  text-align: left;
+  width: calc(100% - 171px);
+  word-break: break-all;
+}
+
+.conclusion-warning {
+  display: block;
+  font-size: 10pt;
+  padding-top: 20px;
+  text-align: center;
+  width: 100%;
+
+  span {
+    margin-left: 5px;
+  }
+}

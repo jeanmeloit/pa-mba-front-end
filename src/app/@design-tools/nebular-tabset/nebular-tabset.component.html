@@ -1,0 +1,9 @@
+<nb-tabset>
+  <nb-tab
+    *ngFor="let tab of tabs"
+    [tabTitle]="tab.tabTitle"
+  >
+    <ng-container *ngTemplateOutlet="templates[tab?.template]">
+    </ng-container>
+  </nb-tab>
+</nb-tabset>

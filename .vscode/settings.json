@@ -1,0 +1,55 @@
+{
+  "editor.dragAndDrop": false,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.glyphMargin": false,
+  "editor.insertSpaces": true,
+  "editor.matchBrackets": "never",
+  "editor.parameterHints.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "html.format.extraLiners": "head, body, /html, fieldset",
+  "html.format.wrapAttributes": "force-aligned",
+  "html.format.indentInnerHtml": true,
+  "files.associations": {
+    ".sasslintrc": "yaml",
+    ".htmlhintrc": "json"
+  },
+  "breadcrumbs.enabled": true,
+  "window.zoomLevel": -1,
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.statusBar.visible": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.colorCustomizations": {
+    "statusBar.noFolderBackground": "#0A0A0D"
+  },
+  "git.ignoreLimitWarning": true,
+  "typescriptHero.imports.organizeOnSave": true,
+  "typescriptHero.imports.insertSemicolons": false,
+  "typescriptHero.imports.multiLineWrapThreshold": 90,
+  "colorize.languages": ["css", "scss", "less", "styl"],
+  "colorize.colorized_variables": ["CSS", "SASS", "LESS", "STYLUS"],
+  "colorize.exclude": [
+    "**/.git",
+    "**/.svn",
+    "**/.gradle",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/node_modules",
+    "**/bower_components",
+    "**/tmp",
+    "**/dist",
+    "**/tests"
+  ],
+  "workbench.colorTheme": "Night Owl",
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib"
+}

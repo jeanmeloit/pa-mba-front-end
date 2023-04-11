@@ -1,0 +1,21 @@
+<button
+  *ngIf="buttonVisible"
+  [appearance]="buttonAppearance"
+  [status]="buttonType"
+  [shape]="buttonShape"
+  [size]="buttonSize"
+  [disabled]="buttonDisabled"
+  [fullWidth]="buttonFullWidth"
+  id="{{ buttonId }}"
+  title="{{ buttonTitle }}"
+  class="{{ buttonClass }}"
+  nbButton
+  (click)="buttonClick()"
+>
+  <i
+    *ngIf="buttonIconVisible"
+    [ngClass]="{'mr-1': buttonText}"
+    class="{{ buttonIcon }}"
+  ></i>
+  {{ buttonText }}
+</button>

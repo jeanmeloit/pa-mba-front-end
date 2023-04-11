@@ -1,0 +1,26 @@
+@import 'src/assets/scss/variables';
+
+nb-card {
+  margin-top: 1px;
+  max-height: 30vh;
+  // overflow-y: auto;
+  // position: fixed;
+  // z-index: 999 !important;
+  margin-bottom: 0;
+  border: none;
+}
+
+nb-list-item {
+  padding: 10px;
+
+  &:hover {
+    background: rgba(237, 240, 245, 0.5);
+  }
+
+  &:first-child {
+    border-top: none;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,41 @@
+<div class="form-control-group">
+  <label
+    class="label"
+    *ngIf="label"
+    [attr.aria-label]="label"
+    for="{{ name }}"
+  >{{ _required ? label + ' *' : label }}</label>
+
+  <nb-select
+    #model="ngModel"
+    [(ngModel)]="currentValue"
+    [name]="name"
+    [disabled]="disabled"
+    [(selected)]="selectedValue"
+    [appearance]="selectAppearance"
+    [status]="status"
+    [shape]="shape"
+    [size]="size"
+    [fullWidth]="hasFullWidth"
+    [placeholder]="placeholder"
+    [required]="_required"
+    [ngClass]="{ 'is-invalid': getAbsControl()?.invalid &&
+    !getAbsControl()?.pristine }"
+    (ngModelChange)="modelChanged($event)"
+    (click)="clickFunction(this)"
+  >
+    <nb-option
+      *ngFor="let option of selectValues"
+      value="{{  useKeyValue ? option.chave : option.valor }}"
+    > {{ useKeyValue ? option.valor : option.texto }} </nb-option>
+  </nb-select>
+  <div
+    *ngIf="(getAbsControl()?.invalid || _required) && !getAbsControl()?.pristine"
+    class="invalid-feedback"
+    [ngClass]="{
+  'd-block': getAbsControl()?.errors
+}"
+  >
+    <div>{{errorMessage}}</div>
+  </div>
+</div>

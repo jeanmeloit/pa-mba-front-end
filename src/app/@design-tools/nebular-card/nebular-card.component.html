@@ -1,0 +1,50 @@
+<nb-card
+  [accent]="accent"
+  [status]="status"
+  [size]="size"
+  [nbSpinner]="spinnerActive"
+  [nbSpinnerStatus]="spinnerStatus"
+  [nbSpinnerSize]="spinnerSize"
+  [nbSpinnerMessage]="spinnerMessage"
+  class="{{ bodyClass }}"
+>
+  <nb-card-header *ngIf="hasHeader">
+    <div class="row">
+      <div [ngClass]="topRightButtonVisible ? 'col-md-8' : 'col-md-12'">
+        <h4 *ngIf="headerTextSize === 4">{{ headerText }}</h4>
+        <h5 *ngIf="headerTextSize === 5">{{ headerText }}</h5>
+        <h6 *ngIf="headerTextSize === 6">{{ headerText }}</h6>
+      </div>
+      <div
+        class="col-md-4"
+        *ngIf="topRightButtonVisible"
+      >
+        <button
+          [appearance]="topRightButtonAppearance"
+          [status]="topRightButtonType"
+          [shape]="topRightButtonSize"
+          [size]="topRightButtonSize"
+          [disabled]="topRightButtonDisabled"
+          id="{{ topRightButtonId }}"
+          title="{{ topRightButtonTitle }}"
+          class="float-right ml-2"
+          nbButton
+          (click)="topRightButtonClick()"
+        >
+          <i
+            *ngIf="topRightButtonIconVisible"
+            [ngClass]="{'mr-1': topRightButtonText}"
+            class="{{ topRightButtonIcon }}"
+          ></i>
+          {{ topRightButtonText }}
+        </button>
+      </div>
+    </div>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng-content></ng-content>
+  </nb-card-body>
+
+  <nb-card-footer *ngIf="hasFooter"> {{ footerText }} </nb-card-footer>
+</nb-card>

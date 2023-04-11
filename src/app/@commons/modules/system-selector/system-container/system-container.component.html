@@ -1,0 +1,42 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-md-12">
+        <h5>
+          {{ containerTitle }}
+        </h5>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <ng-container>
+      <div class="row">
+        <div
+          class="col-md-4 mb-2 pointer"
+          *ngFor="let module of modules"
+        >
+          <div
+            class="row pointer"
+            title="{{ module.texto }}"
+          >
+            <div
+              class="col-md-12 mb-1 flex-module-item"
+              (click)="switchModules(module)"
+            >
+              <img
+                [src]="module.icone ? module.icone : 'assets/images/laptop.svg'"
+                alt="Logo"
+              >
+            </div>
+            <div
+              class="col-md-12"
+              [ngStyle]="{'text-align': 'center'}"
+            >
+              <span>{{ module.nome }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,74 @@
+<dx-data-grid
+  [id]="gridId"
+  [dataSource]="dataSource"
+  [allowColumnReordering]="enableColumnReordering"
+  [allowColumnResizing]="enableColumnResizing"
+  [columnAutoWidth]="enableColumnAutoWidth"
+  [showColumnLines]="showColumnLines"
+  [showRowLines]="showRowLines"
+  [showBorders]="showBorders"
+  [rowAlternationEnabled]="enableRowAlternation"
+  [wordWrapEnabled]="enableWordWrap"
+  [loadPanel]="enableLoadPanel"
+  [keyExpr]="keyExpression ? keyExpression : null"
+  [(selectedRowKeys)]="selectedRowKeys"
+  (onSelectionChanged)="emitSelection($event)"
+>
+  <dxo-column-chooser [enabled]="enableColumnChoser"></dxo-column-chooser>
+  <dxo-group-panel [visible]="enableGroupPanel"></dxo-group-panel>
+  <dxo-column-fixing [enabled]="enableColumnFixing"></dxo-column-fixing>
+  <dxo-export
+    [enabled]="enableExport"
+    fileName="{{ exportFileName }}"
+  ></dxo-export>
+
+  <dxo-state-storing
+    [enabled]="enableStorage"
+    type="localStorage"
+    storageKey="{{ storageKey }}"
+  ></dxo-state-storing>
+
+  <dxo-paging [pageSize]="pageSize"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="enablePageSizeSelector"
+    [allowedPageSizes]="allowedPageSizes"
+    [showInfo]="true"
+  >
+  </dxo-pager>
+  <dxo-header-filter [visible]="enableHeaderFilter"></dxo-header-filter>
+  <dxo-filter-row [visible]="enableFilterRow"></dxo-filter-row>
+  <dxo-search-panel
+    [visible]="enableSearchPanel"
+    placeholder="{{ searchPanelPlaceholder }}"
+  ></dxo-search-panel>
+
+  <dxo-selection
+    *ngIf="enableSelection"
+    [selectAllMode]="'allPages'"
+    [showCheckBoxesMode]="'always'"
+    mode="multiple"
+  ></dxo-selection>
+
+  <dxi-column
+    *ngFor="let column of columnsSource"
+    [dataField]="column?.dataField"
+    [caption]="column?.caption"
+    [hidingPriority]="column?.hidingPriority"
+    [dataType]="column?.dataType"
+    [sortOrder]="column?.sortOrder"
+    [visible]="column?.visible"
+    [cellTemplate]="column?.cellTemplate"
+    [allowEditing]="column?.allowEditing"
+    [allowExporting]="column?.allowExporting"
+    [allowFiltering]="column?.allowFiltering"
+    [allowHiding]="column?.allowHiding"
+    [allowResizing]="column?.allowResizing"
+    [allowSorting]="column?.allowSorting"
+    [allowSearch]="column?.allowSearch"
+    [allowGrouping]="column?.allowGrouping"
+    [allowHeaderFiltering]="column?.allowHeaderFiltering"
+    [allowReordering]="column?.allowReordering"
+  >
+  </dxi-column>
+  <ng-content></ng-content>
+</dx-data-grid>

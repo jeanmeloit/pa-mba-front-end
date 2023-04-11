@@ -1,0 +1,112 @@
+<pds-nebular-dialog
+  id="common-search-dialog"
+  [dialogTitle]="dialogTitle"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [rightFirstButtonText]="'Confirmar'"
+  [rightFirstButtonVisible]="true"
+  [rightFirstButtonIconVisible]="true"
+  [rightFirstButtonIcon]="'fas fa-save'"
+  [rightFirstButtonId]="'common-confirm-search-dialog-button'"
+  [rightFirstButtonTitle]="'Confirmar'"
+  [rightFirstButtonDisabled]="!selectedKeys || selectedKeys.length <= 0"
+  (rightFirstButtonEmitter)="confirm()"
+  [bottomLeftButtonText]="'Cancelar'"
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="'fas fa-undo-alt'"
+  [bottomLeftButtonId]="'common-cancel-search-dialog-button'"
+  [bottomLeftButtonTitle]="'Cancelar'"
+  [bottomLeftButtonDisabled]="false"
+  (bottomLeftButtonEmitter)="dispose()"
+>
+  <dx-data-grid
+    id="common-search-grid"
+    [dataSource]="dataGrid"
+    [allowColumnReordering]="true"
+    [allowColumnResizing]="true"
+    [columnAutoWidth]="true"
+    [showColumnLines]="false"
+    [showRowLines]="false"
+    [showBorders]="false"
+    [rowAlternationEnabled]="true"
+    [wordWrapEnabled]="true"
+    [columnHidingEnabled]="true"
+    keyExpr="uuid"
+    [selectedRowKeys]="[]"
+    (onSelectionChanged)="onSelectionChanged($event)"
+  >
+    <dxo-selection
+      [mode]="multiple ? 'multiple' : 'single'"
+      selectAllMode="allPages"
+      showCheckBoxesMode="always"
+    ></dxo-selection>
+
+    <dxo-paging [pageSize]="5"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10, 20]"
+      [showInfo]="true"
+    >
+    </dxo-pager>
+
+    <dxo-header-filter [visible]="true"> </dxo-header-filter>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+    <dxo-sorting mode="multiple"></dxo-sorting>
+
+    <dxo-group-panel [visible]="true" [emptyPanelText]="''"></dxo-group-panel>
+
+    <dxo-search-panel
+      [visible]="true"
+      [placeholder]="searchText"
+    ></dxo-search-panel>
+
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+
+    <dxi-column
+      *ngFor="let column of columnsTemplate"
+      [dataField]="column?.dataField"
+      [caption]="column?.caption"
+      [hidingPriority]="column?.hidingPriority"
+      [dataType]="column?.dataType"
+      [sortOrder]="column?.sortOrder"
+      [visible]="column?.visible"
+      [editCellTemplate]="column?.editCellTemplate"
+      [cellTemplate]="column?.cellTemplate"
+      [allowEditing]="column?.allowEditing"
+      [allowExporting]="column?.allowExporting"
+      [allowFiltering]="column?.allowFiltering"
+      [allowHiding]="column?.allowHiding"
+      [allowResizing]="column?.allowResizing"
+      [allowSorting]="column?.allowSorting"
+      [allowSearch]="column?.allowSearch"
+      [allowGrouping]="column?.allowGrouping"
+      [allowHeaderFiltering]="column?.allowHeaderFiltering"
+      [allowReordering]="column?.allowReordering"
+      [width]="column?.width"
+      [alignment]="column?.alignment"
+      [type]="column?.type"
+      [setCellValue]="column?.setCellValue"
+      [editorOptions]="column?.editorOptions"
+    >
+      <dxo-lookup
+        *ngIf="column?.lookup"
+        [dataSource]="column?.lookup?.dataSource"
+        [displayExpr]="column?.lookup?.displayExpr"
+        [valueExpr]="column?.lookup?.valueExpr"
+      >
+      </dxo-lookup>
+
+      <dxo-form-item
+        *ngIf="column?.formItem"
+        [colSpan]="column?.formItem?.colSpan"
+        [editorOptions]="column?.formItem?.editorOptions"
+        [editorType]="column?.formItem?.editorType"
+        [isRequired]="column?.formItem?.isRequired"
+        [visible]="column?.formItem?.visible"
+      >
+      </dxo-form-item>
+    </dxi-column>
+  </dx-data-grid>
+</pds-nebular-dialog>

@@ -1,0 +1,29 @@
+nb-card {
+  min-width: 30vw;
+  max-width: 40vw;
+  max-height: 50vh;
+  margin-bottom: 0;
+  border: none;
+}
+
+.flex-module-item {
+  display: flex;
+  justify-content: center;
+
+  &:hover,
+  &.active {
+    img {
+      filter: contrast(100%);
+    }
+  }
+
+  & img {
+    filter: contrast(0%);
+    width: 60px !important;
+    transition: all 0.3s;
+    &:hover {
+      width: 70px !important;
+      transition: all 0.3s;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<pds-nebular-dialog
+  [dialogTitle]="dialogTitle"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [rightFirstButtonText]="confirmText"
+  [rightFirstButtonVisible]="true"
+  [rightFirstButtonIconVisible]="true"
+  [rightFirstButtonIcon]="'fas fa-file-pdf'"
+  [rightFirstButtonId]="'confirm-view-pdf'"
+  [rightFirstButtonTitle]="confirmText"
+  [rightFirstButtonDisabled]="false"
+  (rightFirstButtonEmitter)="confirm()"
+  [bottomLeftButtonText]="disposeText"
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="'fas fa-undo-alt'"
+  [bottomLeftButtonId]="'dispose-view-pdf-dialog'"
+  [bottomLeftButtonTitle]="disposeText"
+  [bottomLeftButtonDisabled]="false"
+  (bottomLeftButtonEmitter)="dispose()"
+>
+  <ng-container>
+    <div *ngIf="content" [innerHTML]="content | safeHtml"></div>
+  </ng-container>
+</pds-nebular-dialog>

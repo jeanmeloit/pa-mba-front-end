@@ -1,0 +1,46 @@
+@import 'src/assets/scss/_variables.scss';
+
+.absolute-right {
+  position: absolute !important;
+  right: 5px;
+  top: 5px;
+}
+.suffix-absolute-right {
+  position: absolute !important;
+  right: 5px;
+  top: 5px;
+}
+
+.tooltip-accessor {
+  font-size: 1.4rem !important;
+  // z-index: 1039;
+}
+
+.suffix-accessor {
+  font-size: 1.4rem !important;
+  // z-index: 1039;
+}
+
+.calendar-accessor {
+  font-size: 1.4rem !important;
+}
+
+::ng-deep nb-tooltip .content {
+  padding: 5px;
+}
+
+.invalid-feedback {
+  color: $nb-marker-danger !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

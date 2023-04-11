@@ -1,0 +1,23 @@
+<div class="form-control-group flex-control">
+  <!-- <label
+    class="label"
+    *ngIf="label"
+    [attr.aria-label]="label"
+    for="{{ name }}"
+  >{{  }}</label> -->
+
+  <nb-checkbox
+    id="{{name}}"
+    #model="ngModel"
+    [(ngModel)]="currentValue"
+    [name]="name"
+    [status]="status"
+    [disabled]="disabled"
+    [indeterminate]="indeterminate"
+    [ngClass]="{ 'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine }"
+    (ngModelChange)="modelChanged($event)"
+    (click)="clickFunction(this)"
+  >
+    {{ label }}
+  </nb-checkbox>
+</div>

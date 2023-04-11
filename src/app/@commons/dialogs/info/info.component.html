@@ -1,0 +1,54 @@
+<pds-nebular-dialog
+  [dialogTitle]="dialogTitle"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [bottomLeftButtonText]="'Voltar'"
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="'fas fa-undo-alt'"
+  [bottomLeftButtonId]="'dispose-info-dialog'"
+  [bottomLeftButtonTitle]="'Voltar'"
+  [bottomLeftButtonDisabled]="false"
+  (bottomLeftButtonEmitter)="dispose()"
+>
+  <ng-container *ngIf="gridData && gridColumns">
+    <dx-data-grid
+      id="gridInfoDialog"
+      [dataSource]="gridData"
+      [allowColumnReordering]="true"
+      [allowColumnResizing]="true"
+      [columnAutoWidth]="true"
+      [showColumnLines]="false"
+      [showRowLines]="false"
+      [showBorders]="false"
+      [rowAlternationEnabled]="true"
+      [wordWrapEnabled]="true"
+      [loadPanel]="false"
+      [columnHidingEnabled]="true"
+    >
+      <dxo-paging [pageSize]="5"></dxo-paging>
+      <dxo-pager
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20]"
+        [showInfo]="true"
+      >
+      </dxo-pager>
+      <dxo-header-filter [visible]="true"> </dxo-header-filter>
+
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-sorting mode="multiple"></dxo-sorting>
+
+      <dxi-column
+        *ngFor="let column of gridColumns"
+        dataField="{{ column?.dataField }}"
+        caption="{{ column?.caption }}"
+        dataType="{{ column?.dataType }}"
+        sortOrder="{{ column?.sortOrder }}"
+      >
+      </dxi-column>
+    </dx-data-grid>
+  </ng-container>
+  <ng-container *ngIf="dialogContent">
+    <div [innerHTML]="dialogContent | safeHtml"></div>
+  </ng-container>
+</pds-nebular-dialog>

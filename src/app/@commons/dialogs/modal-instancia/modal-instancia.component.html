@@ -1,0 +1,29 @@
+<nb-card class="teste">
+  <nb-card-header>
+    <nb-icon class="far fa-paper-plane marginRight-10"></nb-icon><span
+      class="marginLeft-10"
+    >Selecionar instância</span>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row min-width">
+      <div
+        class="col-sm-12"
+        *ngFor="let item of dados"
+      >
+        <a
+          (click)="dismiss(item.url, item.idCliente, item.idSistema)"
+          class="cursor"
+        >
+          <p>{{item.nome}}</p>
+        </a>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button
+      type="button"
+      class="btn btn-dark"
+      (click)="dismiss(null, null, null)"
+    >Fechar</button>
+  </nb-card-footer>
+</nb-card>

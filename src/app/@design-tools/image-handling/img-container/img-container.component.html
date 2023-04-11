@@ -1,0 +1,41 @@
+<ng-container>
+  <div
+    [ngClass]="imageShape"
+    [ngStyle]="{ width: imgWidth, height: imgHeight, position: 'relative' }"
+    class="uploader-area"
+    eqpDragDrop
+    (files)="filesDropped($event)"
+  >
+    <ng-container *ngIf="!croppedImage && !legacyImage">
+      <input
+        style="display: none"
+        type="file"
+        (change)="onFileChanged($event.target.files[0])"
+        #fileInput
+      />
+      <span
+        >Arraste uma imagem ou
+        <b class="pointer" (click)="fileInput.click()">clique aqui!</b>
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="croppedImage || legacyImage">
+      <div class="remove-button">
+        <pds-nebular-button
+          [buttonVisible]="true"
+          [buttonType]="'primary'"
+          [buttonSize]="'tiny'"
+          [buttonTitle]="'Remover'"
+          [buttonId]="'remove-img-from-container'"
+          [buttonIcon]="'fas fa-times'"
+          [buttonIconVisible]="true"
+          (buttonEmitter)="removeImage()"
+        >
+        </pds-nebular-button>
+      </div>
+    </ng-container>
+
+    <img [src]="croppedImage" />
+    <img *ngIf="legacyImage && !croppedImage" [src]="legacyImage" alt="" />
+  </div>
+</ng-container>

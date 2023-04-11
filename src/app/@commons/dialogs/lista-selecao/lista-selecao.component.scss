@@ -1,0 +1,41 @@
+@import '../../../../assets/scss/variables';
+
+cdk-virtual-scroll-viewport {
+  min-height: 250px;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  font-size: 13pt;
+}
+
+.checkbox {
+  display: inline-block;
+  margin-right: 3px;
+  position: relative;
+  transform: translateY(1px);
+
+  i {
+    color: $nb-marker-primary;
+    font-size: 12pt;
+  }
+
+  input {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    top: 3px;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    input {
+      pointer-events: none;
+    }
+  }
+}

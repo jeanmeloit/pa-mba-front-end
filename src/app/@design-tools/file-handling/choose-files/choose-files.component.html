@@ -1,0 +1,88 @@
+<pds-nebular-dialog
+  [dialogTitle]="dialogTitle"
+  [dialogSize]="'medium'"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [bottomLeftButtonText]="backText"
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="backIcon"
+  [bottomLeftButtonId]="'dispose-choose-files-dialog'"
+  [bottomLeftButtonTitle]="backText"
+  [bottomLeftButtonDisabled]="false"
+  (bottomLeftButtonEmitter)="dispose()"
+  [rightFirstButtonText]="confirmText"
+  [rightFirstButtonVisible]="true"
+  [rightFirstButtonIconVisible]="true"
+  [rightFirstButtonIcon]="confirmIcon"
+  [rightFirstButtonId]="'confirm-file-selection'"
+  [rightFirstButtonTitle]="confirmText"
+  [rightFirstButtonDisabled]="isDisabled()"
+  (rightFirstButtonEmitter)="confirm()"
+>
+  <ng-container>
+    <div class="form-group mt-2">
+      <div class="input-group">
+        <div class="col-12 px-0">
+          <pds-nebular-button
+            [buttonVisible]="true"
+            [buttonType]="'primary'"
+            [buttonTitle]="'Selecionar arquivo'"
+            [buttonText]="'Arquivo'"
+            [buttonIcon]="'fas fa-plus-circle'"
+            [buttonIconVisible]="true"
+            (buttonEmitter)="file.click()"
+            buttonId="upload-file"
+          >
+          </pds-nebular-button>
+
+          <span class="ml-3 file-name">{{ fileModel?.nome }}</span>
+
+          <span class="opacity-0 visibility-hidden no-outline square-1px">
+            <input
+              #file
+              (change)="uploadFile($event)"
+              name="file"
+              type="file"
+            />
+          </span>
+        </div>
+
+        <ng-container *ngIf="uploadProgress > 0">
+          <div class="col-12 px-0 pt-3">
+            <nb-progress-bar
+              *ngIf="uploadProgress <= 100"
+              [value]="uploadProgress"
+              [size]="'small'"
+              [status]="'info'"
+              [displayValue]="true"
+              id="file-progress-bar"
+            ></nb-progress-bar>
+
+            <span *ngIf="uploadProgress === 100" class="conclusion-warning">
+              <i class="fas fa-check-circle text-green"></i>
+              <span>O upload foi concluído</span>
+            </span>
+          </div>
+        </ng-container>
+
+        <div *ngIf="fileModel?.nome" class="col-12 px-0">
+          <pds-nebular-input
+            [(ngModel)]="descricao"
+            [type]="'text'"
+            [style]="'basic'"
+            [size]="'small'"
+            [shape]="'rectangle'"
+            label="Descrição"
+            placeholder="Descrição"
+            errorMessage="É obrigatório inserir uma descrição para o anexo"
+            required="true"
+            maxlength="80"
+            id="description-anexo-lib"
+          >
+          </pds-nebular-input>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</pds-nebular-dialog>

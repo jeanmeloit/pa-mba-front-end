@@ -1,0 +1,62 @@
+<div
+  [hidden]="readonly && files?.length === 0"
+  class="form-group position-relative"
+>
+  <label *ngIf="!hideLabel" [attr.aria-label]="label" for="model"
+    >{{ label }}
+    <span class="text-blue-lighter">({{ files?.length || 0 }})</span>
+  </label>
+
+  <div class="col-12 px-0 mt-2">
+    <ul class="no-dot pl-0 d-inline-block mb-0">
+      <li class="d-inline-block text-center mb-3">
+        <a
+          (click)="openFileUploadModal()"
+          *ngIf="!readonly"
+          class="d-inline-block pointer align-top mb-3"
+          id="adicionar-arquivo"
+          nbTooltip="Campo para adição de anexos"
+          nbTooltipPlacement="top"
+          nbTooltipTrigger="hover"
+          nbTooltipStatus="info"
+          [nbTooltipIcon]="{ icon: 'question-circle', pack: 'fas' }"
+        >
+          <img alt="Adicionar arquivo" src="assets/img/files/file-add.png" />
+        </a>
+      </li>
+      <li
+        *ngFor="let file of files; index as i"
+        class="d-inline-block text-center mb-3"
+      >
+        <a
+          [attr.href]="file?.link"
+          [title]="file?.nome"
+          class="d-block"
+          target="_blank"
+        >
+          <img [src]="getFileSrc(file)" alt="Arquivo" />
+        </a>
+
+        <span (click)="removeFile(i)" *ngIf="!readonly" class="remove">
+          <i class="fas fa-times-circle text-red"></i>
+        </span>
+
+        <span class="d-block pl-2">{{ file?.nome }}</span>
+        <span class="d-block pl-2">{{ file?.tamanho }}</span>
+        <span class="d-block pl-2">{{ file?.descricao }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    *ngIf="control?.invalid && required && files.length === 0"
+    class="invalid-feedback"
+    [ngClass]="{
+      'd-block': control?.errors
+    }"
+  >
+    <div *ngIf="!!control?.errors?.required">{{ errorMessage }}</div>
+  </div>
+</div>
+
+<span *ngIf="readonly && files?.length === 0">Nenhum anexo disponível</span>

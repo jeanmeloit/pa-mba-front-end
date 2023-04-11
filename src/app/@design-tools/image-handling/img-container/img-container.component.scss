@@ -1,0 +1,61 @@
+@import '../../../@theme/styles/themes.scss';
+
+.uploader-area {
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.5s;
+
+  & span {
+    padding: 0px 0px 5px 5px;
+  }
+}
+
+.default {
+  & img {
+    width: 100%;
+    height: auto;
+    // margin-top: -10%;
+  }
+}
+
+.rounded {
+  border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  & img {
+    width: 100%;
+    height: auto;
+    // margin-top: -10%;
+  }
+}
+
+.signature {
+  & img {
+    width: 100%;
+    height: auto;
+    // margin-top: -5%;
+  }
+}
+
+.text-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.centered {
+  font-family: sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.remove-button {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+}

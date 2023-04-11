@@ -1,0 +1,166 @@
+{
+    "items": [
+        {
+            "key": "$base-success",
+            "value": "rgba(0, 214, 143, 1)"
+        },
+        {
+            "key": "$base-warning",
+            "value": "rgba(255, 170, 0, 1)"
+        },
+        {
+            "key": "$base-danger",
+            "value": "rgba(255, 61, 113, 1)"
+        },
+        {
+            "key": "$button-default-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$button-success-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$button-danger-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$base-accent",
+            "value": "rgba(98, 0, 238, 1)"
+        },
+        {
+            "key": "$base-text-color",
+            "value": "rgba(66, 66, 66, 1)"
+        },
+        {
+            "key": "$pager-page-selected-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$toast-info-bg",
+            "value": "rgba(98, 0, 238, 1)"
+        },
+        {
+            "key": "$tooltip-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$material-slider-tooltip-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$base-bg",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$base-border-color",
+            "value": "rgba(224, 224, 224, 1)"
+        },
+        {
+            "key": "$scheduler-appointment-text-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$datagrid-row-selected-color",
+            "value": "rgba(66, 66, 66, 1)"
+        },
+        {
+            "key": "$datagrid-row-focused-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$datagrid-selection-bg",
+            "value": "rgba(98, 0, 238, 0.26)"
+        },
+        {
+            "key": "$datagrid-menu-icon-color",
+            "value": "rgba(98, 0, 238, 1)"
+        },
+        {
+            "key": "$tooltip-bg",
+            "value": "rgba(98, 0, 238, 1)"
+        },
+        {
+            "key": "$toolbar-bg",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$drawer-shader-background-color",
+            "value": "rgba(98, 0, 238, 0.5)"
+        },
+        {
+            "key": "$scrollable-scroll-bg",
+            "value": "rgba(98, 0, 238, 1)"
+        },
+        {
+            "key": "$badge-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$datagrid-editor-bg",
+            "value": "rgba(255, 255, 255, 0)"
+        },
+        {
+            "key": "$tagbox-tag-color",
+            "value": "rgba(0, 0, 0, 0.6)"
+        },
+        {
+            "key": "$tagbox-tag-bg",
+            "value": "rgba(224, 224, 224, 1)"
+        },
+        {
+            "key": "$tagbox-tag-active-color",
+            "value": "rgba(0, 0, 0, 0.87)"
+        },
+        {
+            "key": "$base-hover-bg",
+            "value": "rgba(0, 0, 0, 0.04)"
+        },
+        {
+            "key": "$base-focus-bg",
+            "value": "rgba(0, 0, 0, 0.04)"
+        },
+        {
+            "key": "$button-group-normal-selected-bg",
+            "value": "rgba(0, 0, 0, 0.18)"
+        },
+        {
+            "key": "$button-normal-hover-bg",
+            "value": "rgba(235, 235, 235, 1)"
+        },
+        {
+            "key": "$button-normal-focused-bg",
+            "value": "rgba(235, 235, 235, 1)"
+        },
+        {
+            "key": "$button-normal-active-bg",
+            "value": "rgba(179, 179, 179, 1)"
+        },
+        {
+            "key": "$accordion-title-color",
+            "value": "rgba(98, 0, 238, 1)"
+        },
+        {
+            "key": "$tabs-hovered-tab-bg-color",
+            "value": "rgba(237, 237, 237, 1)"
+        },
+        {
+            "key": "$textbox-search-icon-color",
+            "value": "rgba(98, 0, 238, 0.54)"
+        },
+        {
+            "key": "$dropdowneditor-icon-active-color",
+            "value": "rgba(98, 0, 238, 0.54)"
+        },
+        {
+            "key": "$switch-bg",
+            "value": "rgba(158, 158, 158, 1)"
+        }
+    ],
+    "baseTheme": "material.blue.dark.compact",
+    "outputColorScheme": "material-light",
+    "makeSwatch": false,
+    "version": "21.2.6",
+    "widgets": [],
+    "removeExternalResources": false
+}

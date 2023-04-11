@@ -1,0 +1,119 @@
+<dx-data-grid
+  id="wrappedGrid"
+  [dataSource]="data"
+  [keyExpr]="remoteOperations ? null : keyExpr"
+  [showBorders]="showBorders"
+  [showColumnLines]="showColumnLines"
+  [showRowLines]="showRowLines"
+  [remoteOperations]="remoteOperations"
+  [(selectedRowKeys)]="selectedRowKeys"
+  [(focusedRowKey)]="focusedRowKey"
+  [focusedRowEnabled]="!editable"
+  [autoNavigateToFocusedRow]="true"
+  [filterSyncEnabled]="true"
+  [disabled]="disabled"
+  [allowColumnResizing]="allowColumnResizing"
+  columnResizingMode="widget"
+  [repaintChangesOnly]="repaintChangesOnly"
+  [customizeColumns]="customizeColumns"
+  [errorRowEnabled]="false"
+  (onCellPrepared)="cellPrepared.emit($event)"
+  (onKeyDown)="onKeyDown($event)"
+  (onContentReady)="onContentReady($event)"
+  (onEditingStart)="editStart.emit($event)"
+  (onEditorPreparing)="editorPreparing.emit($event)"
+  (onRowUpdated)="onRowUpdated($event)"
+  (onRowPrepared)="onRowPrepared($event)"
+  (onSelectionChanged)="onSelectionChanged($event)"
+  (onRowDblClick)="rowDoubleClickAsync($event)"
+  (onRowValidating)="onRowValidating($event)"
+  (onInitNewRow)="onInitNewRow($event)"
+  (onRowInserted)="onRowInserted($event)"
+  (onRowInserting)="rowInserting.emit($event)"
+  (onRowRemoved)="onRowRemoved($event)"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+>
+  <dxo-paging [pageSize]="pageSize"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="enablePageSizeSelector"
+    [allowedPageSizes]="allowedPageSizes"
+    [showInfo]="true"
+  >
+  </dxo-pager>
+
+  <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
+
+  <dxo-sorting [mode]="sortMode"></dxo-sorting>
+
+  <dxo-column-fixing [enabled]="allowColumnFixing"></dxo-column-fixing>
+
+  <dxo-header-filter [visible]="enableHeaderFilter"></dxo-header-filter>
+
+  <dxo-filter-row [visible]="enableFilterRow"></dxo-filter-row>
+
+  <dxo-search-panel
+    [visible]="showSearchPanel"
+    placeholder="{{ searchPanelPlaceholder }}"
+    [(text)]="searchPanelText"
+    [searchVisibleColumnsOnly]="true"
+  >
+  </dxo-search-panel>
+
+  <dxo-row-dragging
+    *ngIf="allowReordering"
+    [allowReordering]="true"
+    [onReorder]="onReorder"
+    [showDragIcons]="showDragIcons"
+    dropFeedbackMode="push"
+  ></dxo-row-dragging>
+
+  <dxo-editing
+    *ngIf="editable"
+    [mode]="editMode"
+    [allowAdding]="allowAdding"
+    [allowUpdating]="allowUpdating"
+    [allowDeleting]="allowDeleting"
+    [useIcons]="true"
+  ></dxo-editing>
+
+  <dxo-selection
+    *ngIf="selection"
+    [allowSelectAll]="allowSelectAll"
+    [selectAllMode]="selectAllMode"
+    [showCheckBoxesMode]="checkboxesMode"
+    [mode]="selectMode"
+  ></dxo-selection>
+
+  <dxo-grouping
+    *ngIf="grouped"
+    #expand
+    [autoExpandAll]="autoExpandGroups"
+    expandMode="rowClick"
+  ></dxo-grouping>
+
+  <dxo-group-panel
+    *ngIf="grouped"
+    [visible]="groupPanelVisible"
+    [emptyPanelText]="groupPanelText"
+  ></dxo-group-panel>
+
+  <dxo-column-chooser [enabled]="enableColumnChoser"></dxo-column-chooser>
+
+  <dxo-state-storing
+    [enabled]="enableStorage"
+    type="localStorage"
+    storageKey="{{ storageKey }}"
+  ></dxo-state-storing>
+
+  <dxo-export
+    [enabled]="enableExport"
+    fileName="{{ exportFileName }}"
+  ></dxo-export>
+
+  <dxo-load-panel
+    [enabled]="loadPanelEnabled"
+    [showIndicator]="true"
+  ></dxo-load-panel>
+
+  <ng-content></ng-content>
+</dx-data-grid>

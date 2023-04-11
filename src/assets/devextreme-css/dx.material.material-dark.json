@@ -1,0 +1,114 @@
+{
+    "items": [
+        {
+            "key": "$base-success",
+            "value": "rgba(0, 214, 143, 1)"
+        },
+        {
+            "key": "$base-warning",
+            "value": "rgba(255, 170, 0, 1)"
+        },
+        {
+            "key": "$base-danger",
+            "value": "rgba(255, 61, 113, 1)"
+        },
+        {
+            "key": "$button-default-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$button-success-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$button-danger-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$base-accent",
+            "value": "rgba(233, 29, 99, 1)"
+        },
+        {
+            "key": "$toast-info-bg",
+            "value": "rgba(0, 149, 255, 1)"
+        },
+        {
+            "key": "$button-default-bg",
+            "value": "rgba(51, 102, 255, 1)"
+        },
+        {
+            "key": "$base-bg",
+            "value": "rgba(53, 53, 53, 1)"
+        },
+        {
+            "key": "$base-border-color",
+            "value": "rgba(48, 48, 48, 1)"
+        },
+        {
+            "key": "$scheduler-appointment-text-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$datagrid-selection-bg",
+            "value": "rgba(233, 29, 99, 0.23)"
+        },
+        {
+            "key": "$texteditor-bg",
+            "value": "rgba(255, 255, 255, 0)"
+        },
+        {
+            "key": "$texteditor-hover-bg",
+            "value": "rgba(255, 255, 255, 0)"
+        },
+        {
+            "key": "$texteditor-border-color",
+            "value": "rgba(37, 37, 37, 1)"
+        },
+        {
+            "key": "$texteditor-hover-border-color",
+            "value": "rgba(233, 29, 99, 0.3)"
+        },
+        {
+            "key": "$datagrid-row-focused-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$datagrid-menu-icon-color",
+            "value": "rgba(233, 29, 99, 1)"
+        },
+        {
+            "key": "$textbox-search-icon-color",
+            "value": "rgba(233, 29, 99, 0.54)"
+        },
+        {
+            "key": "$dropdowneditor-icon-active-color",
+            "value": "rgba(233, 29, 99, 0.54)"
+        },
+        {
+            "key": "$tooltip-bg",
+            "value": "rgba(233, 29, 99, 1)"
+        },
+        {
+            "key": "$material-slider-tooltip-color",
+            "value": "rgba(255, 255, 255, 1)"
+        },
+        {
+            "key": "$accordion-title-color",
+            "value": "rgba(233, 29, 99, 1)"
+        },
+        {
+            "key": "$drawer-shader-background-color",
+            "value": "rgba(233, 29, 99, 0.5)"
+        },
+        {
+            "key": "$scrollable-scroll-bg",
+            "value": "rgba(233, 29, 99, 1)"
+        }
+    ],
+    "baseTheme": "material.blue.dark.compact",
+    "outputColorScheme": "material-dark",
+    "makeSwatch": false,
+    "version": "21.2.6",
+    "widgets": [],
+    "removeExternalResources": false
+}

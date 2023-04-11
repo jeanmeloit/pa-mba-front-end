@@ -1,0 +1,129 @@
+$blue-normal: #30485d;
+$blue-light: #547490;
+$blue-lighter: #9db6cc;
+$blue-dark: #113c5e;
+
+$gray-dark-1: #555;
+$gray-dark-2: #777;
+$gray-dark-3: #575d61;
+$gray-dark-4: #666;
+$gray-dark-5: #333;
+$gray-dark-6: #a9a9a9;
+
+$gray-light-1: #f7f7f7;
+$gray-light-2: #f5f5f5;
+$gray-light-3: #ddd;
+$gray-light-4: #f9f9f9;
+$gray-light-5: #eee;
+$gray-light-6: #86919a;
+$gray-light-7: #dedede;
+$gray-light-8: #dee2e6;
+$gray-light-9: #cacaca;
+$gray-light-10: #fdfdfd;
+$gray-light-11: #ccc;
+$gray-light-12: #e6e6e6;
+$gray-light-13: #b2b2b2;
+$gray-light-14: #d6d6d6;
+
+$gray-medium-1: #696969;
+$silver-medium: #c0c0c0;
+
+$deep-sky-blue: #00bfff;
+$light-sky-blue: #87cefa;
+$sky-blue: #87ceeb;
+
+// GRADIENTS
+$cotton-candy: linear-gradient(40deg, #ff6ec4, #7873f5) !important;
+$deep-sea: linear-gradient(40deg, #45cafc, #303f9f) !important;
+$rocks-on-the-beach: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+$spring-afternoon: linear-gradient(40deg, #ffd86f, #fc6262) !important;
+$spring-warmth: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%) !important;
+$warm-flame: linear-gradient(
+  45deg,
+  #ff9a9e 0%,
+  #fad0c4 99%,
+  #fad0c4 100%
+) !important;
+$night-fade: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) !important;
+$juicy-peach: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%) !important;
+$young-passion: linear-gradient(
+  to right,
+  #ff8177 0%,
+  #ff867a 0%,
+  #ff8c7f 21%,
+  #f99185 52%,
+  #cf556c 78%,
+  #b12a5b 100%
+) !important;
+$lady-lips: linear-gradient(
+  to top,
+  #ff9a9e 0%,
+  #fecfef 99%,
+  #fecfef 100%
+) !important;
+$sunny-morning: linear-gradient(120deg, #f6d365 0%, #fda085 100%) !important;
+$rainy-ashville: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%) !important;
+$frozen-dreams: linear-gradient(
+  to top,
+  #fdcbf1 0%,
+  #fdcbf1 1%,
+  #e6dee9 100%
+) !important;
+$winter-neva: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%) !important;
+$dusty-grass: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%) !important;
+$tempting-azure: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%) !important;
+$heavy-rain: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%) !important;
+$amy-crisp: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%) !important;
+$mean-fruit: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%) !important;
+$deep-blue: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%) !important;
+$ripe-malinka: linear-gradient(120deg, #f093fb 0%, #f5576c 100%) !important;
+$cloudy-knoxville: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%) !important;
+$morpheus-den: linear-gradient(to top, #30cfd0 0%, #330867 100%) !important;
+$rare-wind: linear-gradient(to top, #a8edea 0%, #fed6e3 100%) !important;
+$near-moon: linear-gradient(to top, #5ee7df 0%, #b490ca 100%) !important;
+
+$black: rgb(0, 0, 0);
+$black-alpha-01: rgba(0, 0, 0, 0.1);
+$black-alpha-02: rgba(0, 0, 0, 0.2);
+$black-alpha-08: rgba(0, 0, 0, 0.08);
+$black-alpha-013: rgba(0, 0, 0, 0.13);
+$black-alpha-015: rgba(0, 0, 0, 0.15);
+$black-alpha-018: rgba(0, 0, 0, 0.18);
+$black-alpha-022: rgba(0, 0, 0, 0.22);
+$black-alpha-023: rgba(0, 0, 0, 0.23);
+
+$white-1: #fff;
+$white-2: #efefef;
+$white-3: #f2f2f2;
+$white-4: #fdfdfd;
+
+$white-alpha-05: rgba(255, 255, 255, 0.5);
+
+$red-invalid: #f44336;
+$red-dark: #dc3545;
+$red-darker: #a72d24;
+$green-valid: #38c62d;
+$green-smooth: #63a681;
+$yellow-warning: #efae23;
+
+$fa-font-path: '../node_modules/@fortawesome/fontawesome-free/webfonts';
+$font-source-sans: 'Source Sans Pro';
+$font-verdana: Tahoma, Arial, Helvetica, sans-serif;
+$font-tahoma: Tahoma, Geneva, Verdana, sans-serif;
+$font-arial: Arial, Helvetica, sans-serif;
+$font-fontawesome: 'Font Awesome 5 Free';
+
+$footer-desktop-height: 100px;
+$footer-mobile-height: 200px;
+
+$brasao-height: 65px;
+$header-height: 56px;
+
+// NEBULAR VARIABLES
+
+$nb-marker-success: #00d68f;
+$nb-marker-danger: #ff3d71;
+$nb-marker-warning: #ffc94d;
+$nb-marker-primary: #3366ff;
+$nb-marker-info: #42aaff;
+$nb-background-marker-dark: #222b45;

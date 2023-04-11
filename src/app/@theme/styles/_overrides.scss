@@ -1,0 +1,77 @@
+@import './themes';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+
+@mixin nb-overrides() {
+  nb-select.size-medium button {
+    padding: 0.4375rem 2.2rem 0.4375rem 1.125rem !important;
+
+    nb-icon {
+      right: 0.41rem !important;
+    }
+  }
+
+  nb-card nb-list {
+    @include nb-scrollbars(
+      nb-theme(card-scrollbar-color),
+      nb-theme(card-scrollbar-background-color),
+      nb-theme(card-scrollbar-width)
+    );
+  }
+
+  nb-layout-column {
+    padding: 1rem 1rem 0.5rem !important;
+  }
+
+  nb-icon {
+    font-size: 1rem !important;
+  }
+
+  nb-tabset {
+    & ul {
+      flex-wrap: wrap;
+    }
+  }
+
+  nb-sidebar {
+    & .scrollable::-webkit-scrollbar-thumb {
+      background: #8f9bb3 !important;
+    }
+  }
+
+  @media only screen and (max-height: 768px) {
+    nb-option-list .option-list {
+      max-height: 15rem !important;
+    }
+  }
+
+  .table {
+    color: nb-theme(text-basic-color) !important;
+  }
+
+  .tab-level-spacing {
+    margin-left: 20px;
+  }
+
+  .dx-master-detail-row {
+    & .dx-master-detail-cel {
+      padding: 0 !important;
+    }
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .dx-datagrid .dx-link {
+    color: nb-theme(color-primary-500);
+  }
+
+  .dx-dialog-button {
+    color: nb-theme(color-primary-500);
+  }
+
+  .dx-datagrid-rowsview .dx-searchbox .dx-placeholder::before,
+  .dx-datagrid-rowsview .dx-searchbox .dx-texteditor-input {
+    padding-left: 32.5px;
+  }
+}

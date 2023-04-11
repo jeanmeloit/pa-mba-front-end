@@ -1,0 +1,181 @@
+<div class="form-control-group">
+  <label
+    class="label"
+    *ngIf="label"
+    [attr.aria-label]="label"
+    for="{{ name }}"
+    >{{ _required ? label + ' *' : label }}</label
+  >
+
+  <div class="position-relative input-group">
+    <ng-container [ngSwitch]="true" class="col-12 px-0">
+      <!-- TEXT -->
+      <ng-container *ngSwitchCase="style === 'basic'" class="col-12 px-0">
+        <ng-container *ngTemplateOutlet="basic"></ng-container>
+      </ng-container>
+
+      <!-- TEXT -->
+      <ng-container *ngSwitchCase="style === 'textArea'" class="col-12 px-0">
+        <ng-container *ngTemplateOutlet="textArea"></ng-container>
+      </ng-container>
+
+      <!-- DATE -->
+      <ng-container *ngSwitchCase="style === 'date'" class="col-12 px-0">
+        <ng-container *ngTemplateOutlet="date"></ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div
+    *ngIf="
+      (getAbsControl()?.invalid || _required) && !getAbsControl()?.pristine
+    "
+    class="invalid-feedback"
+    [ngClass]="{
+      'd-block': getAbsControl()?.errors
+    }"
+  >
+    <div>{{ errorMessage }}</div>
+  </div>
+</div>
+<!-- TEXT INPUT -->
+<ng-template #basic>
+  <input
+    nbInput
+    #model="ngModel"
+    [(ngModel)]="currentValue"
+    [status]="status"
+    [shape]="shape"
+    [fieldSize]="size"
+    [fullWidth]="hasFullWidth"
+    [type]="type"
+    [name]="name"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [required]="_required"
+    [placeholder]="placeholder"
+    [textMask]="primaryMask ? primaryMask : mask"
+    [autocomplete]="autocomplete"
+    [attr.id]="name"
+    [attr.maxLength]="maxlength"
+    [attr.autocomplete]="autocomplete ? 'on' : 'off'"
+    [ngClass]="{
+      'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine
+    }"
+    [class]="class"
+    (ngModelChange)="modelChanged($event)"
+    (blur)="blured.emit($event)"
+    (click)="clickFunction(this)"
+  />
+
+  <!-- SUFFIX BUTTON -->
+  <ng-container *ngTemplateOutlet="suffixTemplate"></ng-container>
+
+  <!-- TOOLTIP BUTTON -->
+  <ng-container *ngTemplateOutlet="tooltipTemplate"></ng-container>
+</ng-template>
+
+<!-- TEXT INPUT -->
+<ng-template #textArea>
+  <textarea
+    nbInput
+    #model="ngModel"
+    [(ngModel)]="currentValue"
+    [status]="status"
+    [shape]="shape"
+    [fieldSize]="size"
+    [fullWidth]="hasFullWidth"
+    [name]="name"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [required]="_required"
+    [placeholder]="placeholder"
+    [attr.id]="name"
+    [attr.rows]="rows"
+    [attr.maxLength]="maxlength"
+    [ngClass]="{
+      'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine
+    }"
+    [class]="class"
+    (ngModelChange)="modelChanged($event)"
+    (blur)="blured.emit($event)"
+    (click)="clickFunction(this)"
+  ></textarea>
+  <ng-container *ngTemplateOutlet="tooltipTemplate"></ng-container>
+</ng-template>
+
+<!-- DATE INPUT -->
+<ng-template #date>
+  <!-- (blur)="datepicker. .navigateTo({year: currentValue?.year, month: currentValue?.month });" -->
+  <input
+    nbInput
+    #dateInput
+    [nbDatepicker]="datepicker"
+    #model="ngModel"
+    (ngModelChange)="modelChanged($event)"
+    (blur)="blured.emit($event)"
+    [status]="status"
+    [shape]="shape"
+    [fieldSize]="size"
+    [fullWidth]="hasFullWidth"
+    [type]="type"
+    [(ngModel)]="currentValue"
+    [autocomplete]="'off'"
+    [attr.id]="name"
+    [class]="class"
+    [disabled]="disabled"
+    [name]="name"
+    [ngClass]="{
+      'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine
+    }"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    [required]="_required"
+  />
+  <nb-icon
+    *ngIf="hasInputAppend"
+    [options]="{ animation: { type: 'pulse' } }"
+    icon="calendar"
+    status="info"
+    class="absolute-right pointer calendar-accessor"
+    id="calendar-generic-access"
+    (click)="datepicker?.isShown ? null : dateInput.click()"
+  ></nb-icon>
+  <nb-datepicker
+    #datepicker
+    format="DD[/]MM[/]YYYY"
+    [min]="minDate"
+    [max]="maxDate"
+  ></nb-datepicker>
+</ng-template>
+
+<ng-template #tooltipTemplate>
+  <nb-icon
+    *ngIf="tooltip"
+    [options]="{ animation: { type: 'pulse' } }"
+    [icon]="tooltipAccessorIcon"
+    [pack]="tooltipAccessorIconPack"
+    id="tooltip-generic-area-access"
+    class="absolute-right pointer tooltip-accessor"
+    status="{{ tooltipAccessorStatus }}"
+    nbTooltip="{{ tooltip }}"
+    nbTooltipIcon="{{ tooltipIcon }}"
+    nbTooltipTrigger="{{ tooltipTrigger }}"
+    nbTooltipPlacement="{{ tooltipPlacement }}"
+    nbTooltipStatus="{{ tooltipStatus }}"
+  ></nb-icon>
+</ng-template>
+<ng-template #suffixTemplate>
+  <nb-icon
+    *ngIf="showSuffixIcon"
+    nbSuffix
+    id="suffix-access"
+    class="absolute-right pointer suffix-accessor suffix-absolute-right"
+    [options]="{ animation: { type: 'pulse' } }"
+    [icon]="primarySuffixIcon ? firstSuffixIcon : secondSuffixIcon"
+    [pack]="suffixIconPack"
+    [status]="suffixStatus"
+    [disabled]="suffixDisabled"
+    [attr.id]="'suffix-button-' + name"
+    (click)="iconButtonClick()"
+  ></nb-icon>
+</ng-template>

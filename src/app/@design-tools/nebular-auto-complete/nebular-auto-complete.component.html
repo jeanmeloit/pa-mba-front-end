@@ -1,0 +1,58 @@
+<div class="form-control-group">
+  <label
+    class="label"
+    *ngIf="label"
+    [attr.aria-label]="label"
+    for="{{ name }}"
+  >{{ label }}</label>
+
+  <input
+    nbInput
+    type="text"
+    #model="ngModel"
+    [(ngModel)]="ghostValue"
+    [name]="name"
+    [disabled]="disabled"
+    [status]="status"
+    [shape]="shape"
+    [fieldSize]="size"
+    [fullWidth]="hasFullWidth"
+    [placeholder]="placeholder"
+    [ngClass]="{ 'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine }"
+    [nbAutocomplete]="autoControl"
+    (click)="clickFunction(this)"
+    (ngModelChange)="modelChanged($event)"
+  />
+
+  <input
+    nbInput
+    type="text"
+    #model="ngModel"
+    [(ngModel)]="currentValue"
+    [name]="name"
+    [disabled]="disabled"
+    [status]="status"
+    [shape]="shape"
+    [fieldSize]="size"
+    [fullWidth]="hasFullWidth"
+    [placeholder]="placeholder"
+    [ngClass]="{ 'is-invalid': getAbsControl()?.invalid && !getAbsControl()?.pristine }"
+    [nbAutocomplete]="autoControl"
+    (ngModelChange)="modelChanged($event)"
+    (click)="clickFunction(this)"
+    [ngStyle]="{'display': 'none'}"
+  />
+  <nb-autocomplete
+    #autoControl
+    (selectedChange)="test($event)"
+  >
+
+    <nb-option
+      *ngFor="let option of results"
+      value="{{ option.valor }}"
+    >
+      {{ option.texto }}
+    </nb-option>
+
+  </nb-autocomplete>
+</div>

@@ -1,0 +1,49 @@
+<pds-nebular-dialog
+  [dialogTitle]="dialogTitle"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [rightFirstButtonText]="'Selecionar'"
+  [rightFirstButtonVisible]="true"
+  [rightFirstButtonIconVisible]="true"
+  [rightFirstButtonIcon]="'fas fa-check-circle'"
+  [rightFirstButtonId]="'confirm-taxes-selection'"
+  [rightFirstButtonTitle]="'Selecionar tributo'"
+  (rightFirstButtonEmitter)="confirm()"
+  [bottomLeftButtonText]="'Voltar'"
+  [bottomLeftButtonVisible]="true"
+  [bottomLeftButtonIconVisible]="true"
+  [bottomLeftButtonIcon]="'fas fa-undo-alt'"
+  [bottomLeftButtonId]="'dispose-taxes-dialog'"
+  [bottomLeftButtonTitle]="'Voltar'"
+  [bottomLeftButtonDisabled]="false"
+  (bottomLeftButtonEmitter)="dispose()"
+>
+  <ng-container>
+    <ul *ngIf="list && list.length > 0">
+      <cdk-virtual-scroll-viewport itemSize="1">
+        <ng-container *cdkVirtualFor="let item of list">
+          <li class="mb-1">
+            <ng-container *ngIf="this.config.type === 'MULTI'">
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  [(ngModel)]="item.$checked"
+                  [attr.value]="item.$checked"
+                />
+
+                <i
+                  [ngClass]="{
+                    'fas fa-check-square': item.$checked,
+                    'far fa-square': !item.$checked
+                  }"
+                ></i>
+              </div>
+            </ng-container>
+
+            {{ item.text }}
+          </li>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+    </ul>
+  </ng-container>
+</pds-nebular-dialog>
