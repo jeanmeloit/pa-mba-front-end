@@ -8,17 +8,17 @@ import { DxDataGridComponent } from 'devextreme-angular'
 import { Subscription } from 'rxjs'
 import { finalize } from 'rxjs/operators'
 
-import { Student } from '../interfaces/student.interface'
-import { StudentService } from './student.service'
+import { Class } from '../interfaces/class.interface'
+import { ClassService } from './class.service'
 
 @Component({
-  selector: 'pds-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.scss'],
+  selector: 'pds-class-grid',
+  templateUrl: './class-grid.component.html',
+  styleUrls: ['./class-grid.component.scss'],
 })
-export class StudentComponent implements OnInit, OnDestroy {
+export class ClassGridComponent implements OnInit, OnDestroy {
   public loading: boolean = false
-  public gridData: Student[] = []
+  public gridData: Class[] = []
   public columns: DxColumnInterface[] = []
   public formItems: DxFormItemInterface[] = []
   public selected: any[]
@@ -31,7 +31,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   @ViewChild(DxDataGridComponent, { static: false })
   public grid: DxDataGridComponent
 
-  constructor(private service: StudentService, private toastr: ToastrService) {}
+  constructor(private service: ClassService, private toastr: ToastrService) {}
 
   public ngOnInit(): void {
     this.fetchGrid()
@@ -49,7 +49,7 @@ export class StudentComponent implements OnInit, OnDestroy {
       .get()
       .pipe(finalize(() => (this.loading = false)))
       .subscribe(
-        (data: Student[]) => {
+        (data: Class[]) => {
           this.gridData = data
         },
         (err: any) => {
@@ -77,23 +77,8 @@ export class StudentComponent implements OnInit, OnDestroy {
         },
       },
       {
-        caption: 'Nome',
+        caption: 'Descrição',
         dataField: 'name',
-        allowSorting: true,
-        allowHeaderFiltering: true,
-      },
-      {
-        caption: 'Telefone',
-        dataField: 'phone',
-        cellTemplate: 'phoneTemplate',
-      },
-      {
-        caption: 'Idade',
-        dataField: 'age',
-      },
-      {
-        caption: 'E-mail',
-        dataField: 'mail',
         allowSorting: true,
         allowHeaderFiltering: true,
       },
@@ -131,52 +116,6 @@ export class StudentComponent implements OnInit, OnDestroy {
               visible: false,
             },
           },
-          {
-            dataField: 'phone',
-            isRequired: true,
-            colSpan: 4,
-            editorOptions: {
-              mask: '(00) 9 0000-0000',
-              showMaskMode: 'onFocus',
-              inputAttr: { id: 'phone' },
-            },
-            label: {
-              visible: false,
-            },
-          },
-          {
-            dataField: 'age',
-            colSpan: 4,
-            editorOptions: {
-              inputAttr: { id: 'age' },
-              max: 150,
-            },
-            editorType: 'dxNumberBox',
-            label: {
-              visible: false,
-            },
-          },
-          {
-            dataField: 'mail',
-            colSpan: 8,
-            isRequired: true,
-            editorOptions: { maxLength: '100', inputAttr: { id: 'mail' } },
-            validationRules: [
-              {
-                type: 'pattern',
-                pattern:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-                message: 'O e-mail informado não é válido',
-              },
-              {
-                type: 'required',
-                message: 'É obrigatório preencher o campo e-mail',
-              },
-            ],
-            label: {
-              visible: false,
-            },
-          },
         ],
       },
     ]
@@ -185,9 +124,9 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   public onToolbarPreparing(event: any): void {
     event.toolbarOptions.items[this.isDialog ? 0 : 1].showText = 'ever'
-    event.toolbarOptions.items[this.isDialog ? 0 : 1].options.text = 'Aluno'
+    event.toolbarOptions.items[this.isDialog ? 0 : 1].options.text = 'Turma'
     event.toolbarOptions.items[this.isDialog ? 0 : 1].options.hint =
-      'Novo Aluno'
+      'Nova Turma'
 
     event.toolbarOptions.items.forEach((item: any, index) => {
       if (item.options) {
@@ -222,7 +161,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         () => {
           this.toastr.send({
             success: true,
-            message: 'Aluno inserido com sucesso.',
+            message: 'Turma inserida com sucesso.',
           })
         },
         (err: any) => {
@@ -248,7 +187,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         () => {
           this.toastr.send({
             success: true,
-            message: 'O aluno ' + event.oldData.name + ' foi atualizado.',
+            message: 'A Turma ' + event.oldData.name + ' foi atualizada.',
           })
         },
         (err: any) => {
@@ -271,7 +210,7 @@ export class StudentComponent implements OnInit, OnDestroy {
       () => {
         this.toastr.send({
           success: true,
-          message: 'Aluno ' + event.data.name + ' excluído com sucesso.',
+          message: 'Turma ' + event.data.name + ' excluída com sucesso.',
         })
       },
       (resp: any) => this.toastr.bulkSend(resp.mensagens),

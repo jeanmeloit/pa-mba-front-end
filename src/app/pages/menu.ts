@@ -14,13 +14,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/dashboard',
   },
   {
-    title: 'Pessoa',
-    icon: { icon: 'user', pack: 'fas' },
+    title: 'Checkin',
+    icon: { icon: 'map-marker-alt', pack: 'fas' },
+    link: '/checkin',
+  },
+  {
+    title: 'Cadastros',
+    icon: { icon: 'cog', pack: 'fas' },
     children: [
       {
         title: 'Aluno',
         icon: { icon: 'user', pack: 'fas' },
         link: '/pessoa/aluno',
+      },
+      {
+        title: 'Turma',
+        icon: { icon: 'th-list', pack: 'fas' },
+        link: '/turma',
       },
     ],
   },

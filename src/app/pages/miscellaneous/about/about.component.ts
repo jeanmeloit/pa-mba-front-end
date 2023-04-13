@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { DefaultConfiguration } from '@src/configuration'
 
 @Component({
   selector: 'pds-about',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
+  public aboutTitle = DefaultConfiguration.app.aboutTitle
+  public aboutDescription = DefaultConfiguration.app.aboutDescription
+
   constructor() {}
 
   ngOnInit(): void {}

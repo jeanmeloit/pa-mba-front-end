@@ -1,15 +1,15 @@
 <pds-default-page
   [mainTitle]="pageTitle"
-  [spinnerActive]="student.loading"
+  [spinnerActive]="class.loading"
   [spinnerStatus]="'info'"
   [topRightButtonVisible]="true"
   [topRightButtonIconVisible]="true"
   [topRightButtonIcon]="'fas fa-sync'"
-  [topRightButtonId]="'update-student-list'"
+  [topRightButtonId]="'update-class-list'"
   [topRightButtonTitle]="'Atualizar'"
-  (topRightButtonEmitter)="student.fetchGrid()"
+  (topRightButtonEmitter)="class.fetchGrid()"
 >
   <ng-container>
-    <pds-student #student></pds-student>
+    <pds-class-grid #class></pds-class-grid>
   </ng-container>
 </pds-default-page>

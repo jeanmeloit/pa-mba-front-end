@@ -1,5 +1,5 @@
 <dx-data-grid
-  id="studentGrid"
+  id="classGrid"
   [dataSource]="gridData"
   [allowColumnReordering]="true"
   [allowColumnResizing]="true"
@@ -31,23 +31,20 @@
   >
   </dxo-pager>
 
-  <dxo-export [enabled]="!isDialog" fileName="Aluno"></dxo-export>
+  <dxo-export [enabled]="!isDialog" fileName="Turma"></dxo-export>
 
   <dxo-header-filter [visible]="'showHeaderFilter'"> </dxo-header-filter>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
 
   <dxo-sorting mode="multiple"></dxo-sorting>
 
-  <dxo-column-chooser
-    [enabled]="!isDialog"
-    [mode]="'select'"
-  ></dxo-column-chooser>
+  <dxo-column-chooser [enabled]="!isDialog"></dxo-column-chooser>
 
   <dxo-group-panel [visible]="true" [emptyPanelText]="''"></dxo-group-panel>
 
   <dxo-search-panel
     [visible]="true"
-    placeholder="Buscar aluno"
+    placeholder="Buscar turma"
   ></dxo-search-panel>
 
   <dxo-editing

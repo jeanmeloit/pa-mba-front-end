@@ -1,0 +1,38 @@
+<pds-nebular-card [spinnerActive]="loading" [spinnerStatus]="'info'">
+  <p-carousel
+    [value]="dates"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="false"
+    [showNavigators]="false"
+    [showIndicators]="false"
+  >
+    <ng-template let-date pTemplate="item">
+      <div class="row mb-4" *ngIf="!loading">
+        <div
+          class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center"
+        >
+          {{ date | date }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <pds-nebular-card *ngFor="let class of classes">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>
+                <b>{{ class.name }}</b>
+              </span>
+              <pds-nebular-button
+                [buttonType]="'primary'"
+                [buttonAppearance]="'ghost'"
+                [buttonIconVisible]="true"
+                [buttonIcon]="'fas fa-arrow-right'"
+              >
+              </pds-nebular-button>
+            </div>
+          </pds-nebular-card>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</pds-nebular-card>

@@ -5,6 +5,7 @@ export interface Configuration {
     name?: string
     title?: string
     aboutTitle?: string
+    aboutDescription?: string
     headerbar?: {
       /**
        * @Param

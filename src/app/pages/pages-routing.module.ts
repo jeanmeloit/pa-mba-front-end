@@ -15,9 +15,19 @@ const routes: Routes = [
           import('./dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
+        path: 'checkin',
+        loadChildren: () =>
+          import('./checkin/checkin.module').then(m => m.CheckinModule),
+      },
+      {
         path: 'pessoa',
         loadChildren: () =>
           import('./person/person.module').then(m => m.PersonModule),
+      },
+      {
+        path: 'turma',
+        loadChildren: () =>
+          import('./class/class.module').then(m => m.ClassModule),
       },
       {
         path: 'outros',

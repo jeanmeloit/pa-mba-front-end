@@ -5,6 +5,8 @@ export const DefaultConfiguration: Configuration = {
     name: 'Checkin control',
     title: 'Checkin control',
     aboutTitle: 'Sobre o projeto aplicado para o MBA front end XPE',
+    aboutDescription:
+      'Projeto aplicado realizado para obtenção de nota no MBA front end XPE',
     sidebar: {
       left: false,
       right: true,
@@ -120,7 +122,7 @@ export const DefaultConfiguration: Configuration = {
     ],
   },
   footer: {
-    title: 'Panther DS',
+    title: 'Checkin control',
     showLinkedin: true,
     linkedinLink: 'https://www.linkedin.com/in/jean-melo/',
     showInstagram: true,
@@ -133,7 +135,7 @@ export const DefaultConfiguration: Configuration = {
   enviroment: {
     dev: 'http://localhost:3000',
     homolog: 'http://localhost:3000',
-    prod: 'https://panther-checkin-control.web.app',
+    prod: 'https://po-mba-back-end-jean.onrender.com',
   },
   backoffice: {
     dev: '',

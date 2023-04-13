@@ -40,7 +40,7 @@ export class NebularButtonComponent implements OnInit {
   public buttonClass: string
 
   @Input()
-  public buttonVisible: boolean = false
+  public buttonVisible: boolean = true
 
   @Input()
   public buttonIconVisible: boolean = false

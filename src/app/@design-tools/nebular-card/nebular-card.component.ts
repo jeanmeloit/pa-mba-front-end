@@ -23,10 +23,10 @@ export class NebularCardComponent implements OnInit {
   public accent: NbComponentStatus
 
   @Input()
-  public spinnerSize: NbComponentSize
+  public spinnerSize: NbComponentSize = 'medium'
 
   @Input()
-  public spinnerStatus: NbComponentStatus
+  public spinnerStatus: NbComponentStatus = 'info'
 
   @Input()
   public spinnerMessage: string
