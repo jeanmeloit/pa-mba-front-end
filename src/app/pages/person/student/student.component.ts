@@ -3,7 +3,7 @@ import { ToastrService } from '@commons/services/toastr/toastr.service'
 import {
   DxColumnInterface,
   DxFormItemInterface,
-} from '@design-tools/interfaces/column-interface'
+} from '@panther/interfaces/column-interface'
 import { DxDataGridComponent } from 'devextreme-angular'
 import { Subscription } from 'rxjs'
 import { finalize } from 'rxjs/operators'
@@ -54,7 +54,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         },
         (err: any) => {
           this.toastr.send({
-            error: true,
+            type: 'danger',
             message: err.error?.causa?.descricao || err?.error?.causa?.message,
           })
         },
@@ -221,13 +221,13 @@ export class StudentComponent implements OnInit, OnDestroy {
       .subscribe(
         () => {
           this.toastr.send({
-            success: true,
+            type: 'success',
             message: 'Aluno inserido com sucesso.',
           })
         },
         (err: any) => {
           this.toastr.send({
-            error: true,
+            type: 'danger',
             message: err.error?.causa?.descricao || err?.error?.causa?.message,
           })
         },
@@ -247,13 +247,13 @@ export class StudentComponent implements OnInit, OnDestroy {
       .subscribe(
         () => {
           this.toastr.send({
-            success: true,
+            type: 'success',
             message: 'O aluno ' + event.oldData.name + ' foi atualizado.',
           })
         },
         (err: any) => {
           this.toastr.send({
-            error: true,
+            type: 'danger',
             message: err.error?.causa?.descricao || err?.error?.causa?.message,
           })
         },
@@ -270,7 +270,7 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.subscription = this.service.delete(event.data.uuid).subscribe(
       () => {
         this.toastr.send({
-          success: true,
+          type: 'success',
           message: 'Aluno ' + event.data.name + ' excluído com sucesso.',
         })
       },

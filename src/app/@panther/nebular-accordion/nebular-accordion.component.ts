@@ -6,8 +6,8 @@ import {
   ViewChild,
 } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
-import { NebularAccordionInterface } from '@design-tools/interfaces/nebular-accordion'
 import { NbAccordionComponent } from '@nebular/theme'
+import { NebularAccordionInterface } from '@panther/interfaces/nebular-accordion'
 
 @Component({
   selector: 'pds-nebular-accordion',

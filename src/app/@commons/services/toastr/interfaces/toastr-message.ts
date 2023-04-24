@@ -5,4 +5,5 @@ export interface ToastrMessageInterface {
   error?: boolean
   message?: string
   title?: string
+  type?: string
 }

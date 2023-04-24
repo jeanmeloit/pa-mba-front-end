@@ -8,6 +8,30 @@ import {
 
 import { ToastrMessageInterface } from './interfaces/toastr-message'
 
+const toastrPropsByType = {
+  ['success']: {
+    status: 'success',
+    title: 'Sucesso',
+  },
+  ['info']: {
+    status: 'info',
+    title: 'Informação',
+  },
+  ['warning']: {
+    status: 'warning',
+    title: 'Atenção',
+  },
+  ['danger']: {
+    duration: 0,
+    status: 'danger',
+    title: 'Erro',
+  },
+  ['default']: {
+    title: '',
+    status: 'primary',
+  },
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,49 +40,27 @@ export class ToastrService {
 
   constructor(private nbToastr: NbToastrService) {}
 
-  public send(dto: ToastrMessageInterface): void {
-    const toastrPrefs = this.getStandardToastConfig()
-
-    if (dto.success) {
-      toastrPrefs.status = 'success'
-      if (!dto.title) dto.title = 'Sucesso'
-    } else if (dto.info) {
-      toastrPrefs.status = 'info'
-      if (!dto.title) dto.title = 'Informação'
-    } else if (dto.warning) {
-      toastrPrefs.status = 'warning'
-      if (!dto.title) dto.title = 'Atenção'
-    } else if (dto.error) {
-      toastrPrefs.duration = 0
-      toastrPrefs.status = 'danger'
-      if (!dto.title) dto.title = 'Erro'
-    } else toastrPrefs.status = 'primary'
-
-    this.nbToastr.show(dto.message, dto.title, toastrPrefs)
+  public send(toastr: ToastrMessageInterface): void {
+    this.handleToastr(toastr)
   }
 
-  public bulkSend(messages: any): void {
-    const toastrPrefs = this.getStandardToastConfig()
-    for (const iterator of messages) {
-      let title
-      if (iterator.success) {
-        toastrPrefs.status = 'success'
-        title = 'Sucesso'
-      } else if (iterator.info) {
-        toastrPrefs.duration = 0
-        toastrPrefs.status = 'info'
-        title = 'Informação'
-      } else if (iterator.warning) {
-        toastrPrefs.status = 'warning'
-        title = 'Atenção'
-      } else if (iterator.error) {
-        toastrPrefs.duration = 0
-        toastrPrefs.status = 'danger'
-        title = 'Erro'
-      } else toastrPrefs.status = 'primary'
-
-      this.nbToastr.show(iterator.message, title, toastrPrefs)
+  public bulkSend(toastrs: any | ToastrMessageInterface): void {
+    for (const toastr of toastrs) {
+      this.handleToastr(toastr)
     }
+  }
+
+  private handleToastr(toastr: any | ToastrMessageInterface): void {
+    const toastrPrefs = {
+      ...this.getStandardToastConfig(),
+      ...toastrPropsByType[toastr.type],
+    }
+
+    this.nbToastr.show(
+      toastr.message,
+      toastr.title || toastrPrefs.title,
+      toastrPrefs,
+    )
   }
 
   public getStandardToastConfig(): Partial<NbToastrConfig> {

@@ -102,13 +102,13 @@ export class APIInterceptor implements HttpInterceptor {
 
     if (causes.causa) {
       esMensagens.push({
-        error: true,
+        type: 'danger',
         message: causes.causa.descricao,
       })
     }
 
     if (err.status === unreachable) {
-      esMensagens.push({ error: true, message: 'Servidor não encontrado' })
+      esMensagens.push({ type: 'danger', message: 'Servidor não encontrado' })
     }
 
     if (

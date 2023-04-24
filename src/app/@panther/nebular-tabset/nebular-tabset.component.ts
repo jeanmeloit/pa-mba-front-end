@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { NebularTab } from '@design-tools/interfaces/nebular-tab'
+import { NebularTab } from '@panther/interfaces/nebular-tab'
 
 @Component({
   selector: 'pds-nebular-tabset',

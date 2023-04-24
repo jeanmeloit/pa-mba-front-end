@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core'
-import { SwUpdate } from '@angular/service-worker'
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker'
 import { ConfirmationComponent } from '@dialogs/confirmation/confirmation.component'
 import {
   NbDialogService,
@@ -17,7 +17,7 @@ import {
 } from '@nebular/theme'
 import { ToastrService } from '@services/toastr/toastr.service'
 import { Subject } from 'rxjs'
-import { debounceTime, takeUntil } from 'rxjs/operators'
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators'
 
 import { LayoutService } from '../@core/utils'
 import { MENU_ITEMS } from './menu'
@@ -85,7 +85,7 @@ export class PagesComponent implements OnInit, OnDestroy {
     private dialogService: NbDialogService,
     private toastr: ToastrService,
   ) {
-    this.updateClient()
+    this.checkAppVersion()
   }
 
   public ngOnInit(): void {
@@ -114,57 +114,67 @@ export class PagesComponent implements OnInit, OnDestroy {
     }
   }
 
-  private updateClient(): void {
+  private checkAppVersion(): void {
     if (!this.swUpdate.isEnabled) {
       console.log('Not Enabled')
       return
     }
-    // this.swUpdate.versionUpdates.pipe(
-    //   filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
-    //   map(evt => ({
-    //     type: 'UPDATE_AVAILABLE',
-    //     current: evt.currentVersion,
-    //     available: evt.latestVersion,
-    //   })),
-    // )
-    this.swUpdate.available.subscribe(event => {
-      const content = {
-        body: 'Deseja instalar a atualização?',
-        confirmText: 'Instalar',
-        confirmIcon: 'fas fa-sync-alt text-white',
-        confirmType: 'success',
-        cancelText: 'Adiar',
-      }
 
-      const dialogRef = this.dialogService.open(ConfirmationComponent, {})
+    this.swUpdate.checkForUpdate().then(() => {
+      this.swUpdate.versionUpdates
+        .pipe(
+          filter(
+            (evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY',
+          ),
+          map(evt => ({
+            type: 'UPDATE_AVAILABLE',
+            current: evt.currentVersion,
+            available: evt.latestVersion,
+          })),
+        )
+        .subscribe(event => {
+          this.openVersionAvailableDialog()
+          console.debug(`current`, event.current, `available `, event.available)
+        })
+    })
+  }
 
-      dialogRef.componentRef.instance.dialogTitle = `Existe uma atualização para o sistema`
-      dialogRef.componentRef.instance.confirmationContent = content
+  private openVersionAvailableDialog(): void {
+    const content = {
+      body: 'Deseja instalar a atualização?',
+      confirmText: 'Instalar',
+      confirmIcon: 'fas fa-sync-alt text-white',
+      confirmType: 'success',
+      cancelText: 'Adiar',
+    }
 
-      dialogRef.onClose.subscribe((data: boolean) => {
-        if (data) {
-          this.toastr.send({
-            success: true,
-            message:
-              'A atualização foi instalada com sucesso e será aplicada dentro dos próximos 3 segundos.',
-          })
-          setTimeout(() => {
-            this.swUpdate.activateUpdate().then(() => location.reload())
-          }, 3000)
-        } else {
-          this.toastr.send({
-            warning: true,
-            message: 'A atualização foi adiada.',
-          })
-          return
-        }
+    const dialogRef = this.dialogService.open(ConfirmationComponent, {})
+
+    dialogRef.componentRef.instance.dialogTitle = `Existe uma atualização para o sistema`
+    dialogRef.componentRef.instance.confirmationContent = content
+
+    dialogRef.onClose.subscribe((doUpdate: boolean) => {
+      this.handleVersionUpdate(doUpdate)
+    })
+  }
+
+  private handleVersionUpdate(doUpdate: boolean) {
+    if (doUpdate) {
+      this.toastr.send({
+        type: 'success',
+        message:
+          'A atualização foi instalada com sucesso e será aplicada dentro dos próximos 3 segundos.',
       })
-      console.log(`current`, event.current, `available `, event.available)
-    })
-
-    this.swUpdate.activated.subscribe(event => {
-      console.log(`current`, event.previous, `available `, event.current)
-    })
+      setTimeout(() => {
+        this.swUpdate.activateUpdate().then(() => location.reload())
+      }, 3000)
+    } else {
+      this.toastr.send({
+        type: 'warning',
+        message: 'A atualização foi adiada.',
+      })
+      return
+    }
   }
 
   private initializeFavoritesControl(): void {

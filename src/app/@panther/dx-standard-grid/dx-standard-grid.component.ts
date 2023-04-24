@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { DxColumnInterface } from '@design-tools/interfaces/column-interface'
+import { DxColumnInterface } from '@panther/interfaces/column-interface'
 
 @Component({
   selector: 'pds-dx-standard-grid',

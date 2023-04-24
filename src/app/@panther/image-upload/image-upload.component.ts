@@ -83,7 +83,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
           self.imageChangedEvent = event
         } else {
           self.toastr.send({
-            error: true,
+            type: 'danger',
             message: `Minimum width is ${FileSnippet.IMAGE_SIZE.width} and minimum heigth is ${FileSnippet.IMAGE_SIZE.height}`,
           })
         }
@@ -92,7 +92,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
       img.src = URL.createObjectURL(file)
     } else {
       this.toastr.send({
-        error: true,
+        type: 'danger',
         message: 'Unsupported File Type. Only jpeg and png is allowed!',
       })
     }
@@ -112,7 +112,7 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
         //     },
         //     (errorResponse: HttpErrorResponse) => {
         //       this.toastr.send({
-        //         error: true,
+        //         type: 'danger',
         //         message: errorResponse.error.errors[0].detail,
         //       })
         //       this.onFailure()

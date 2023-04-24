@@ -30,7 +30,7 @@
       "@services/*": ["app/@commons/services/*"],
       "@misc/*": ["app/@commons/misc/*"],
       "@systems-id/*": ["app/@commons/systems-id/*"],
-      "@design-tools/*": ["app/@design-tools/*"],
+      "@panther/*": ["app/@panther/*"],
       "@favorites/*": ["app/@commons/modules/favorites/*"],
       "@guards/*": ["app/guards/*"],
       "@notifications/*": ["app/@commons/modules/notifications/*"],

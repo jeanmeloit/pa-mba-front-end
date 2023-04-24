@@ -67,7 +67,7 @@ export class ChooseFilesComponent implements OnInit {
         if (!isNaN(parseInt(key, 10))) {
           if (files[key].size > parseInt(this.maxSize, 10) * 1000000) {
             this.toastr.send({
-              error: true,
+              type: 'danger',
               // tslint:disable-next-line: max-line-length
               message:
                 'O tamanho do arquivo excede o máximo permitido de ' +
@@ -83,7 +83,7 @@ export class ChooseFilesComponent implements OnInit {
             files[key].name.indexOf('.sql') > -1
           ) {
             this.toastr.send({
-              error: true,
+              type: 'danger',
               message: 'Formato de arquivo não permitido',
             })
 
@@ -94,7 +94,7 @@ export class ChooseFilesComponent implements OnInit {
             files[key].name.indexOf('.exe') > -1
           ) {
             this.toastr.send({
-              error: true,
+              type: 'danger',
               message: 'Formato de arquivo não permitido',
             })
 

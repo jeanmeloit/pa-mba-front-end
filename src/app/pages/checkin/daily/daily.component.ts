@@ -39,7 +39,7 @@ export class DailyComponent implements OnInit, OnDestroy {
         },
         (err: any) => {
           this.toastr.send({
-            error: true,
+            type: 'danger',
             message: err.error?.causa?.descricao || err?.error?.causa?.message,
           })
         },

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
-import { FileHandle } from '@design-tools/image-handling/directives/dragDrop.directive'
 import { NbDialogService } from '@nebular/theme'
+import { FileHandle } from '@panther/image-handling/directives/dragDrop.directive'
 
 import { ImgAdjusterComponent } from './../img-adjuster/img-adjuster.component'
 

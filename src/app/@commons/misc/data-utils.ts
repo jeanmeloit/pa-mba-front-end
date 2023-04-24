@@ -1,4 +1,4 @@
-import { NebularSelect } from '@design-tools/interfaces/nebular-select'
+import { NebularSelect } from '@panther/interfaces/nebular-select'
 
 export default class DataUtil {
   public static getMonthList(removeAll?: boolean): NebularSelect[] {

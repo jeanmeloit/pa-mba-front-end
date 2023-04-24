@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { DxColumnInterface } from '@design-tools/interfaces/column-interface'
 import { NbDialogRef } from '@nebular/theme'
+import { DxColumnInterface } from '@panther/interfaces/column-interface'
 
 @Component({
   selector: 'pds-search-dialog',

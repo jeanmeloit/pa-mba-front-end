@@ -20,7 +20,7 @@ export class FormValidator {
     })
 
     this.toastr.send({
-      error: true,
+      type: 'danger',
       message: 'Preencha os campos destacados',
     })
   }

@@ -6,8 +6,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core'
-import { FileHandle } from '@design-tools/image-handling/directives/dragDrop.directive'
 import { NbDialogRef } from '@nebular/theme'
+import { FileHandle } from '@panther/image-handling/directives/dragDrop.directive'
 import Cropper from 'cropperjs'
 
 @Component({
