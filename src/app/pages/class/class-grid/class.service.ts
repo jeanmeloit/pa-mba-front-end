@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { BaseService } from '@src/app/@commons/services/base/base.service'
+import { BaseService } from '@services/base/base.service'
 
 import { Class } from '../interfaces/class.interface'
 

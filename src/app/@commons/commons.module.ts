@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NbDialogModule } from '@nebular/theme'
-import { PantherModule } from '@src/app/@panther/panther.module'
+import { PantherModule } from '@panther/panther.module'
 import { TextMaskModule } from 'angular2-text-mask'
 
 import { ConfirmationComponent } from './dialogs/confirmation/confirmation.component'

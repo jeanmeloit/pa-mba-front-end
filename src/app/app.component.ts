@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { DefaultConfiguration } from '@src/configuration'
+import { DefaultConfiguration } from '@config/configuration'
 
 import { AnalyticsService } from './@core/utils/analytics.service'
 import { SeoService } from './@core/utils/seo.service'

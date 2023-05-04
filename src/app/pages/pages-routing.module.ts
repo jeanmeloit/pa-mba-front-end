@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
+import { AppComponent } from './../app.component'
 import { PagesComponent } from './pages.component'
 
 const routes: Routes = [
@@ -8,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', component: AppComponent },
       {
         path: 'dashboard',
         loadChildren: () =>

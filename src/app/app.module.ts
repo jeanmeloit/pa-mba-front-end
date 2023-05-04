@@ -1,24 +1,11 @@
 import { registerLocaleData } from '@angular/common'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import localePt from '@angular/common/locales/pt'
-import {
-  enableProdMode,
-  ErrorHandler,
-  LOCALE_ID,
-  NgModule,
-} from '@angular/core'
-import {
-  ScreenTrackingService,
-  UserTrackingService,
-} from '@angular/fire/analytics'
+import { enableProdMode, LOCALE_ID, NgModule } from '@angular/core'
 import { BrowserModule, Title } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ServiceWorkerModule } from '@angular/service-worker'
-import {
-  ApmErrorHandler,
-  ApmModule,
-  ApmService,
-} from '@elastic/apm-rum-angular'
+import { ApmModule } from '@elastic/apm-rum-angular'
 import { APIInterceptor } from '@misc/api.interceptor'
 import { BlobErrorHttpInterceptor } from '@misc/blob-error-http-interceptor'
 import {
@@ -37,6 +24,7 @@ import { CoreModule } from './@core/core.module'
 import { ThemeModule } from './@theme/theme.module'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { AuthModule } from './auth/auth.module'
 
 /**
  * @license
@@ -69,6 +57,7 @@ locale(navigator.language)
     NbToastrModule.forRoot(),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    AuthModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -85,16 +74,9 @@ locale(navigator.language)
       useClass: BlobErrorHttpInterceptor,
       multi: true,
     },
-    {
-      provide: ErrorHandler,
-      useClass: ApmErrorHandler,
-    },
     APIInterceptor,
     BlobErrorHttpInterceptor,
     Title,
-    ApmService,
-    ScreenTrackingService,
-    UserTrackingService,
   ],
 })
 export class AppModule {}

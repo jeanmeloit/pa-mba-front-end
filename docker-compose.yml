@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  boilerplate:
-    image: boilerplate
-    build: .
-    ports:
-      - 8081:80

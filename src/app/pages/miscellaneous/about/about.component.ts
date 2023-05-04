@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { DefaultConfiguration } from '@src/configuration'
+import { DefaultConfiguration } from '@config/configuration'
 
 @Component({
   selector: 'pds-about',

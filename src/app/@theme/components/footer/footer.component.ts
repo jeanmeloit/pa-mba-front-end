@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { DefaultConfiguration } from '@config/configuration'
 import { NbThemeService } from '@nebular/theme'
-import { DefaultConfiguration } from '@src/configuration'
 import { Subject } from 'rxjs'
 import { map, takeUntil } from 'rxjs/operators'
 

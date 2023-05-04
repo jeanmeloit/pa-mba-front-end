@@ -1,6 +1,0 @@
-micro-service-demo-v1.equiplano.svc.cluster.local
-pessoa-v1.equiplano.svc.cluster.local
-micro-service-demo-v1-pgsql.equiplano.svc.cluster.local
-
-
-apm-apm-server.argocd.svc.cluster.local

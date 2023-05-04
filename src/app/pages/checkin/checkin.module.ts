@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { CommonsModule } from '@src/app/@commons/commons.module'
+import { CommonsModule } from '@commons/commons.module'
 import { ButtonModule } from 'primeng/button'
 import { CarouselModule } from 'primeng/carousel'
 

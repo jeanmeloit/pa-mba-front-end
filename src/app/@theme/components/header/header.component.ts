@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'
 import { Router } from '@angular/router'
+import { DefaultConfiguration } from '@config/configuration'
 import { LayoutService } from '@core/utils'
 import { RippleService } from '@core/utils/ripple.service'
 import { UserDataInterface } from '@guards/services/user-data'
@@ -12,11 +13,12 @@ import {
   NbSidebarService,
   NbThemeService,
 } from '@nebular/theme'
-import { DefaultConfiguration } from '@src/configuration'
 import themes from 'devextreme/ui/themes'
 import { refreshTheme } from 'devextreme/viz/themes'
 import { Observable, Subject } from 'rxjs'
 import { first, map, takeUntil } from 'rxjs/operators'
+
+import { LoginService } from './../../../auth/services/login.service'
 
 @Component({
   selector: 'pds-header',
@@ -54,7 +56,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private rippleService: RippleService,
     private domSanitizer: DomSanitizer,
     private router: Router,
-    private searchService: NbSearchService, // private userDataService: UserDataService,
+    private searchService: NbSearchService,
+    private loginService: LoginService, // private userDataService: UserDataService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map(theme => {
@@ -196,7 +199,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private redirectToLogout(): void {
-    // this.userDataService.crossClientDel('userData')
-    // this.userDataService.crossClientDel('jwtToken')
+    this.loginService.logout()
+    this.router.navigate(['/login'])
   }
 }

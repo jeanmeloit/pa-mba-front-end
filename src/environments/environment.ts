@@ -1,4 +1,4 @@
-import { DefaultConfiguration } from '../configuration'
+import { DefaultConfiguration } from '@config/configuration'
 
 /**
  * @license

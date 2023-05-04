@@ -3,18 +3,11 @@ import { CommonsModule } from '@commons/commons.module'
 import { NbIconLibraries, NbMenuModule } from '@nebular/theme'
 
 import { ThemeModule } from '../@theme/theme.module'
-import { MiscellaneousModule } from './miscellaneous/miscellaneous.module'
 import { PagesRoutingModule } from './pages-routing.module'
 import { PagesComponent } from './pages.component'
 
 @NgModule({
-  imports: [
-    PagesRoutingModule,
-    ThemeModule,
-    NbMenuModule,
-    MiscellaneousModule,
-    CommonsModule,
-  ],
+  imports: [PagesRoutingModule, ThemeModule, NbMenuModule, CommonsModule],
   declarations: [PagesComponent],
 })
 export class PagesModule {

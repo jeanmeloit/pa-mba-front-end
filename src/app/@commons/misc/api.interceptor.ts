@@ -7,6 +7,7 @@ import {
   HttpRequest,
 } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 import { environment } from '@environments/environment'
 import { LoadingService } from '@services/loading/loading.service'
 import { ToastrMessageInterface } from '@services/toastr/interfaces/toastr-message'
@@ -22,6 +23,7 @@ export class APIInterceptor implements HttpInterceptor {
   constructor(
     private loadingService: LoadingService,
     private toastr: ToastrService,
+    private router: Router,
   ) {
     this.BASE_URL = environment.url
   }
@@ -31,6 +33,16 @@ export class APIInterceptor implements HttpInterceptor {
   }
 
   public getRequest(req: HttpRequest<any>): HttpRequest<any> {
+    const jwt = JSON.parse(localStorage.getItem('squirrel'))
+
+    let headers: any = {}
+
+    if (jwt) {
+      headers = {
+        authorization: jwt,
+      }
+    }
+
     if (req.body) {
       deepCleaner(req.body)
       deepCleaner(req.body)
@@ -39,6 +51,7 @@ export class APIInterceptor implements HttpInterceptor {
     return req.clone({
       url: `${this.BASE_URL}/${req.url}`,
       withCredentials: true,
+      setHeaders: headers,
       params: this.handleParams(req.params),
     })
   }
@@ -73,11 +86,11 @@ export class APIInterceptor implements HttpInterceptor {
 
   private handleResponse(data: any): void {
     if (!data || !data.body) return
-    const { esMensagens } = data.body
+    const { messages } = data.body
 
-    if (esMensagens) {
-      if (esMensagens.mensagens.length > 0) {
-        this.toastr.bulkSend(esMensagens.mensagens)
+    if (messages) {
+      if (messages.mensagens.length > 0) {
+        this.toastr.bulkSend(messages.mensagens)
       }
     } else {
       const { mensagens } = data.body
@@ -94,21 +107,45 @@ export class APIInterceptor implements HttpInterceptor {
     const badRequest = 400 // https://httpstatuses.com/400
     const unauthorized = 401 // https://httpstatuses.com/401
     const forbidden = 403 // https://httpstatuses.com/403
+    const serverError = 500 // https://httpstatuses.com/500
 
-    const esMensagens: ToastrMessageInterface[] = []
+    const messages: ToastrMessageInterface[] = []
+    const error = err.error
 
-    const causes =
-      err.error.causa instanceof Object ? err.error : JSON.parse(err.error)
+    if (err.status === unreachable) {
+      messages.push({ type: 'danger', message: 'Servidor não encontrado' })
+    }
 
-    if (causes.causa) {
-      esMensagens.push({
+    if (error) {
+      let msg = error.message
+
+      messages.push({
         type: 'danger',
-        message: causes.causa.descricao,
+        message: msg,
+      })
+    }
+
+    if (err.status === unauthorized || err.status === forbidden) {
+      messages.push({ type: 'warning', message: 'Por favor, efetue o login' })
+      localStorage.setItem('error', JSON.stringify(messages))
+      this.router.navigate([`/login`], {
+        queryParams: { returnUrl: this.router.url },
       })
     }
 
     if (err.status === unreachable) {
-      esMensagens.push({ type: 'danger', message: 'Servidor não encontrado' })
+      messages.push({ type: 'danger', message: 'Servidor não encontrado' })
+      localStorage.setItem('error', JSON.stringify(messages))
+      this.router.navigate(['/login'], {
+        queryParams: { returnUrl: this.router.url },
+      })
+    }
+
+    if (err.status === serverError) {
+      localStorage.setItem('error', JSON.stringify(messages))
+      this.router.navigate(['/login'], {
+        queryParams: { returnUrl: this.router.url },
+      })
     }
 
     if (
@@ -117,7 +154,7 @@ export class APIInterceptor implements HttpInterceptor {
       err.status === unauthorized ||
       err.status === forbidden
     ) {
-      this.toastr.bulkSend(esMensagens)
+      this.toastr.bulkSend(messages)
       return of(err)
     }
 

@@ -1,0 +1,74 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="logo">
+        <img
+          [src]="
+            currentTheme === 'dark' ||
+            currentTheme === 'cosmic' ||
+            currentTheme === 'material-light' ||
+            currentTheme === 'material-dark'
+              ? 'assets/img/white-logo.png'
+              : 'assets/img/default-logo.png'
+          "
+          alt="Logo Panther DS"
+          title="Checkin control"
+        />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <pds-nebular-input
+          [style]="'basic'"
+          [type]="'text'"
+          [size]="'large'"
+          [shape]="'semi-round'"
+          formControlName="email"
+          name="usuario"
+          label="Usuário"
+          placeholder="Usuário"
+          required
+          errorMessage="É obrigatório preencher o usuário"
+        >
+        </pds-nebular-input>
+      </div>
+
+      <div class="form-group">
+        <pds-nebular-input
+          [style]="'basic'"
+          [type]="'password'"
+          [size]="'large'"
+          [shape]="'semi-round'"
+          formControlName="password"
+          name="senha"
+          label="Senha"
+          placeholder="Senha"
+          required
+          errorMessage="É obrigatório preencher a senha"
+        >
+        </pds-nebular-input>
+      </div>
+
+      <div class="form-group">
+        <pds-nebular-button
+          [buttonVisible]="true"
+          [buttonFullWidth]="true"
+          [buttonType]="'primary'"
+          [buttonText]="'Acessar'"
+          [buttonSize]="'large'"
+          [buttonShape]="'semi-round'"
+          [buttonTitle]="'Acessar'"
+          [buttonId]="'login'"
+          [buttonClass]="'float-right'"
+          [buttonDisabled]="loading || !f.email.value || !f.password.value"
+        >
+        </pds-nebular-button>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    </div>
+  </div>
+  <div class="col-md-12 col-sm-12 divisor">
+    <span>{{ 'Checkin control' }}</span>
+  </div>
+</form>

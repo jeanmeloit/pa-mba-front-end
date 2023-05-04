@@ -60,6 +60,16 @@
             }
           },
           "configurations": {
+            "development": {
+              "main": "src/main.ts",
+              "tsConfig": "src/tsconfig.app.json",
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "dev": {
               "budgets": [
                 {
@@ -131,13 +141,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pa-mba-front-end:build"
+            "browserTarget": "pa-mba-front-end:build",
+            "port": 3570
           },
           "configurations": {
             "production": {
               "browserTarget": "pa-mba-front-end:build:production"
+            },
+            "development": {
+              "browserTarget": "pa-mba-front-end:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

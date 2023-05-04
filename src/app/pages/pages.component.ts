@@ -1,5 +1,4 @@
 import {
-  ApplicationRef,
   Component,
   HostListener,
   OnDestroy,
@@ -81,7 +80,6 @@ export class PagesComponent implements OnInit, OnDestroy {
     private sidebarService: NbSidebarService,
     private layoutService: LayoutService,
     private swUpdate: SwUpdate,
-    private appRef: ApplicationRef,
     private dialogService: NbDialogService,
     private toastr: ToastrService,
   ) {
