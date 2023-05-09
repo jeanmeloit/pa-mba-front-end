@@ -25,17 +25,21 @@
       </ng-container>
     </ng-container>
   </div>
-  <div
+
+  <ng-container
     *ngIf="
-      (getAbsControl()?.invalid || _required) && !getAbsControl()?.pristine
+      getAbsControl()?.invalid &&
+      !getAbsControl()?.pristine &&
+      !getAbsControl()?.touched
     "
-    class="invalid-feedback"
-    [ngClass]="{
-      'd-block': getAbsControl()?.errors
-    }"
   >
-    <div>{{ errorMessage }}</div>
-  </div>
+    <p class="caption status-danger" *ngIf="getAbsControl()?.errors?.required">
+      {{ errorMessage }}
+    </p>
+    <p class="caption status-danger" *ngIf="getAbsControl()?.errors?.pattern">
+      {{ invalidMessage }}
+    </p>
+  </ng-container>
 </div>
 <!-- TEXT INPUT -->
 <ng-template #basic>
@@ -43,7 +47,7 @@
     nbInput
     #model="ngModel"
     [(ngModel)]="currentValue"
-    [status]="status"
+    [status]="getStatus()"
     [shape]="shape"
     [fieldSize]="size"
     [fullWidth]="hasFullWidth"
@@ -55,6 +59,7 @@
     [placeholder]="placeholder"
     [textMask]="primaryMask ? primaryMask : mask"
     [autocomplete]="autocomplete"
+    [pattern]="pattern"
     [attr.id]="name"
     [attr.maxLength]="maxlength"
     [attr.autocomplete]="autocomplete ? 'on' : 'off'"
@@ -80,7 +85,7 @@
     nbInput
     #model="ngModel"
     [(ngModel)]="currentValue"
-    [status]="status"
+    [status]="getStatus()"
     [shape]="shape"
     [fieldSize]="size"
     [fullWidth]="hasFullWidth"
@@ -113,7 +118,7 @@
     #model="ngModel"
     (ngModelChange)="modelChanged($event)"
     (blur)="blured.emit($event)"
-    [status]="status"
+    [status]="getStatus()"
     [shape]="shape"
     [fieldSize]="size"
     [fullWidth]="hasFullWidth"

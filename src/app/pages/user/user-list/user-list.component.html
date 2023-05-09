@@ -1,0 +1,15 @@
+<pds-default-page
+  [mainTitle]="pageTitle"
+  [spinnerActive]="user.loading"
+  [spinnerStatus]="'info'"
+  [topRightButtonVisible]="true"
+  [topRightButtonIconVisible]="true"
+  [topRightButtonIcon]="'fas fa-sync'"
+  [topRightButtonId]="'update-user-list'"
+  [topRightButtonTitle]="'Atualizar'"
+  (topRightButtonEmitter)="user.fetchGrid()"
+>
+  <ng-container>
+    <pds-user-grid #user></pds-user-grid>
+  </ng-container>
+</pds-default-page>

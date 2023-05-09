@@ -1,0 +1,35 @@
+<pds-default-page
+  [mainTitle]="pageTitle"
+  [spinnerActive]="loading"
+  [spinnerStatus]="'info'"
+  [topRightButtonVisible]="true"
+  [topRightButtonIconVisible]="true"
+  [topRightButtonIcon]="'fas fa-arrow-left'"
+  [topRightButtonId]="'update-user-list'"
+  [topRightButtonAppearance]="'ghost'"
+  [topRightButtonTitle]="'Voltar para a lista'"
+  (topRightButtonEmitter)="back()"
+  [rightApproveButtonVisible]="true"
+  [rightApproveButtonIconVisible]="true"
+  [rightApproveButtonIcon]="'fas fa-map-marker'"
+  [rightApproveButtonId]="'do-checkin'"
+  [rightApproveButtonAppearance]="'filled'"
+  [rightApproveButtonText]="'Checkin'"
+  [rightApproveButtonTitle]="'Fazer checkin'"
+  (rightApproveButtonEmitter)="checkin()"
+>
+  <ng-container>
+    <div class="row" *ngFor="let checkin of checkins">
+      <div class="col-md-6">
+        <pds-nebular-card [bodyClass]="'mb-1'">
+          <div class="d-flex justify-content-between">
+            <div>
+              {{ checkin.name }}
+            </div>
+            <div><i class="fas fa-check success"></i></div>
+          </div>
+        </pds-nebular-card>
+      </div>
+    </div>
+  </ng-container>
+</pds-default-page>

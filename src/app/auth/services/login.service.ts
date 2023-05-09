@@ -4,23 +4,34 @@ import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 import { LoginInterface } from '../interfaces/login.interface'
+import { User } from '../interfaces/user.interface'
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  private currentUserSubject: BehaviorSubject<any>
-  public currentUser: Observable<any>
+  private currentJwtSubject: BehaviorSubject<any>
+  private currentUserSubject: BehaviorSubject<User>
+  public currentJwt: Observable<any>
+  public currentUser: Observable<User>
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(
+    this.currentJwtSubject = new BehaviorSubject<any>(
       JSON.parse(localStorage.getItem('squirrel')),
     )
+    this.currentUserSubject = new BehaviorSubject<User>(
+      JSON.parse(localStorage.getItem('userData')),
+    )
 
+    this.currentJwt = this.currentJwtSubject.asObservable()
     this.currentUser = this.currentUserSubject.asObservable()
   }
 
-  public get currentUserValue(): any {
+  public get currentJwtValue(): any {
+    return this.currentJwtSubject.value
+  }
+
+  public get currentUserValue(): User {
     return this.currentUserSubject.value
   }
 
@@ -37,7 +48,8 @@ export class LoginService {
           if (user) {
             const data = user.body.data
             localStorage.setItem('squirrel', JSON.stringify(data.token))
-            this.currentUserSubject.next(data.token)
+            this.currentJwtSubject.next(data.token)
+            this.currentUserSubject.next(data)
             this.sanitizeUserData(data)
           }
 
@@ -55,6 +67,7 @@ export class LoginService {
   public logout(): void {
     localStorage.removeItem('squirrel')
     localStorage.removeItem('userData')
+    this.currentJwtSubject.next(null)
     this.currentUserSubject.next(null)
   }
 }

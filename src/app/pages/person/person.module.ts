@@ -5,10 +5,10 @@ import { CommonsModule } from '@commons/commons.module'
 import { PersonRoutingModule } from './person-routing.module'
 import { PersonComponent } from './person.component'
 import { StudentListComponent } from './student-list/student-list.component'
-import { StudentComponent } from './student/student.component'
+import { StudentGridComponent } from './student-grid/student-grid.component'
 
 @NgModule({
-  declarations: [PersonComponent, StudentComponent, StudentListComponent],
+  declarations: [PersonComponent, StudentGridComponent, StudentListComponent],
   imports: [CommonModule, CommonsModule, PersonRoutingModule],
 })
 export class PersonModule {}

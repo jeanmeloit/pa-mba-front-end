@@ -47,6 +47,7 @@ export class NebularInputComponent implements ControlValueAccessor, OnInit {
   @Input() public label: string
   @Input() public type: string = 'text'
   @Input() public style: string = 'basic'
+  @Input() public pattern: string
   @Input() public placeholder: string
   @Input() public maxlength?: number
   @Input() public disabled?: boolean = false
@@ -54,6 +55,7 @@ export class NebularInputComponent implements ControlValueAccessor, OnInit {
   @Input() public class?: string
   @Input() public autocomplete?: boolean = true
   @Input() public errorMessage?: string = 'Favor preencher o campo'
+  @Input() public invalidMessage?: string = 'Favor preencher o campo'
   @Input() public hasInputAppend?: boolean = true
   public _required: boolean = false
   @Input() public mask?: any = { mask: false }
@@ -166,8 +168,36 @@ export class NebularInputComponent implements ControlValueAccessor, OnInit {
 
   public getAbsControl(): any {
     if (!this.controlContainer) return null
-
     return this.controlContainer.control.get(this.formControlName)
+  }
+
+  public getStatus(): string {
+    const { errors, invalid, pristine, touched } =
+      this.controlContainer.control.get(this.formControlName)
+
+    if (
+      errors &&
+      Object.keys(errors).length &&
+      invalid &&
+      !pristine &&
+      !touched
+    )
+      return 'danger'
+    else return this.status
+
+    //   submited &&
+    //  control.errors?.pattern &&
+    //  control?.invalid &&
+    //   !control?.pristine &&
+    //   !control?.touched
+    //     ? 'danger'
+    //     : control?.invalid &&
+    //       !control?.pristine &&
+    //       !control?.touched &&
+    //       control.errors?.required
+    //     ? 'danger'
+    //     : 'basic'
+    // "
   }
 
   public getTooltipIconClass(): string {

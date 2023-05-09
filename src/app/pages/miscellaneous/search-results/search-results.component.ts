@@ -3,21 +3,26 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { NbMenuItem } from '@nebular/theme'
 import { Subscription } from 'rxjs'
 
-import { MENU_ITEMS } from './../../menu'
+import { MenuUtil } from './../../menu'
 
 @Component({
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
-  public menu: NbMenuItem[] = MENU_ITEMS
+  public menu: NbMenuItem[] = []
   public result: NbMenuItem[] = []
   public searchTerm: string
   private subscription: Subscription
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private menuUtil: MenuUtil,
+  ) {}
 
   public ngOnInit(): void {
+    this.menu = this.menuUtil.menuItems
     this.subscription = this.route.params.subscribe(params => {
       this.result = []
       this.searchTerm = params['term']

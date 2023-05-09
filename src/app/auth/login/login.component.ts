@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   private manageUrls(): void {
     const returnUrl = this.route.snapshot.queryParams['returnUrl']
 
-    if (returnUrl && returnUrl.indexOf('/login') === -1) {
+    if (returnUrl && returnUrl.indexOf('/auth/login') === -1) {
       this.returnUrl = returnUrl
     } else {
       this.returnUrl = '/'
@@ -89,5 +89,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl])
         },
       })
+  }
+
+  public signup(): void {
+    this.router.navigate(['/auth/signup'])
   }
 }

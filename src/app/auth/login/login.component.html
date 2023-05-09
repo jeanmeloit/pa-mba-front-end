@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form id="loginForm" [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-md-12">
       <div class="logo">
@@ -53,6 +53,7 @@
         <pds-nebular-button
           [buttonVisible]="true"
           [buttonFullWidth]="true"
+          [nativeType]="'submit'"
           [buttonType]="'primary'"
           [buttonText]="'Acessar'"
           [buttonSize]="'large'"
@@ -64,10 +65,16 @@
         >
         </pds-nebular-button>
       </div>
-
-      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
     </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
   </div>
+  <section class="another-action" aria-label="Register">
+    <span>Ainda não tem uma conta? </span>
+    <a role="button" class="signup-link-decoration pointer" (click)="signup()"
+      >Registre-se</a
+    >
+  </section>
   <div class="col-md-12 col-sm-12 divisor">
     <span>{{ 'Checkin control' }}</span>
   </div>

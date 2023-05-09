@@ -19,7 +19,7 @@ import { Subject } from 'rxjs'
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators'
 
 import { LayoutService } from '../@core/utils'
-import { MENU_ITEMS } from './menu'
+import { MenuUtil } from './menu'
 
 @Component({
   selector: 'pds-pages',
@@ -66,11 +66,10 @@ import { MENU_ITEMS } from './menu'
   `,
 })
 export class PagesComponent implements OnInit, OnDestroy {
-  menu = MENU_ITEMS
-
   private readonly destroy$ = new Subject<void>()
 
   public actualMenuData: any
+  public menu: NbMenuItem[] = []
   public actualIsFavorite: boolean = false
 
   @ViewChild(NbPopoverDirective) popover: NbPopoverDirective
@@ -82,8 +81,10 @@ export class PagesComponent implements OnInit, OnDestroy {
     private swUpdate: SwUpdate,
     private dialogService: NbDialogService,
     private toastr: ToastrService,
+    private menuUtil: MenuUtil,
   ) {
     this.checkAppVersion()
+    this.menu = this.menuUtil.menuItems
   }
 
   public ngOnInit(): void {

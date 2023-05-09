@@ -3,5 +3,7 @@ export interface Student {
   name: string
   phone: string
   age: string
-  mail: string
+  email: string
+  createdAt?: string
+  updatedAt?: string
 }

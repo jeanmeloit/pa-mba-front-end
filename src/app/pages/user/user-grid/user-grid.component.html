@@ -1,0 +1,183 @@
+<dx-data-grid
+  id="userGrid"
+  [dataSource]="gridData"
+  [allowColumnReordering]="true"
+  [allowColumnResizing]="true"
+  [columnAutoWidth]="true"
+  [showColumnLines]="false"
+  [showRowLines]="false"
+  [showBorders]="false"
+  [rowAlternationEnabled]="true"
+  [wordWrapEnabled]="true"
+  [loadPanel]="false"
+  [columnHidingEnabled]="true"
+  [selectedRowKeys]="selected"
+  keyExpr="uuid"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+  (onEditorPreparing)="onEditorPreparing($event)"
+  (onRowInserting)="onRowInserting($event)"
+  (onRowInserted)="onRowInserted($event)"
+  (onRowUpdating)="onRowUpdating($event)"
+  (onRowUpdated)="onRowUpdated($event)"
+  (onRowRemoving)="onRowRemoving($event)"
+  (onRowRemoved)="onRowRemoved($event)"
+>
+  <dxo-selection [mode]="isDialog ? 'single' : 'none'"></dxo-selection>
+  <dxo-paging [pageSize]="isDialog ? 5 : 10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="isDialog ? [5, 10, 20] : [10, 20, 50]"
+    [showInfo]="true"
+  >
+  </dxo-pager>
+
+  <dxo-export [enabled]="!isDialog" fileName="Usuários"></dxo-export>
+
+  <dxo-header-filter [visible]="'showHeaderFilter'"> </dxo-header-filter>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-sorting mode="multiple"></dxo-sorting>
+
+  <dxo-column-chooser
+    [enabled]="!isDialog"
+    [mode]="'select'"
+  ></dxo-column-chooser>
+
+  <dxo-group-panel [visible]="true" [emptyPanelText]="''"></dxo-group-panel>
+
+  <dxo-search-panel
+    [visible]="true"
+    placeholder="Buscar usuário"
+  ></dxo-search-panel>
+
+  <dxo-editing
+    mode="form"
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [allowAdding]="true"
+    [useIcons]="true"
+  >
+    <dxo-form colCount="1">
+      <dxi-item
+        *ngFor="let formItem of formItems"
+        [caption]="formItem?.caption"
+        [colCount]="formItem?.colCount"
+        [colSpan]="formItem?.colSpan"
+        [component]="formItem?.component"
+        [cssClass]="formItem?.cssClass"
+        [dataField]="formItem?.dataField"
+        [editorOptions]="formItem?.editorOptions"
+        [editorType]="formItem?.editorType"
+        [isRequired]="formItem?.isRequired"
+        [itemType]="formItem?.itemType"
+        [label]="formItem?.label"
+        [name]="formItem?.name"
+        [render]="formItem?.render"
+        [template]="formItem?.template"
+        [validationRules]="formItem?.validationRules"
+        [visible]="formItem?.visible"
+        [visibleIndex]="formItem?.visibleIndex"
+      >
+        <dxo-label
+          [alignments]="formItem?.label?.alignments"
+          [location]="formItem?.label?.location"
+          [showColon]="formItem?.label?.showColon"
+          [text]="formItem?.label?.text"
+          [visible]="formItem?.label?.visible"
+        >
+        </dxo-label>
+        <dxi-item
+          *ngFor="let children of formItem?.children"
+          [colSpan]="children?.colSpan"
+          [component]="children?.component"
+          [cssClass]="children?.cssClass"
+          [dataField]="children?.dataField"
+          [editorOptions]="children?.editorOptions"
+          [editorType]="children?.editorType"
+          [isRequired]="children?.isRequired"
+          [itemType]="children?.itemType"
+          [label]="children?.label"
+          [name]="children?.name"
+          [render]="children?.render"
+          [template]="children?.template"
+          [validationRules]="children?.validationRules"
+          [visible]="children?.visible"
+          [visibleIndex]="children?.visibleIndex"
+        >
+          <dxo-label
+            [alignments]="children?.label?.alignments"
+            [location]="children?.label?.location"
+            [showColon]="children?.label?.showColon"
+            [text]="children?.label?.text"
+            [visible]="children?.label?.visible"
+          >
+          </dxo-label>
+        </dxi-item>
+      </dxi-item>
+    </dxo-form>
+  </dxo-editing>
+
+  <dxi-column
+    *ngFor="let column of columns"
+    [dataField]="column?.dataField"
+    [caption]="column?.caption"
+    [hidingPriority]="column?.hidingPriority"
+    [dataType]="column?.dataType"
+    [sortOrder]="column?.sortOrder"
+    [visible]="column?.visible"
+    [cellTemplate]="column?.cellTemplate"
+    [allowEditing]="column?.allowEditing"
+    [allowExporting]="column?.allowExporting"
+    [allowFiltering]="column?.allowFiltering"
+    [allowHiding]="column?.allowHiding"
+    [allowResizing]="column?.allowResizing"
+    [allowSorting]="column?.allowSorting"
+    [allowSearch]="column?.allowSearch"
+    [allowGrouping]="column?.allowGrouping"
+    [allowHeaderFiltering]="column?.allowHeaderFiltering"
+    [allowReordering]="column?.allowReordering"
+    [width]="column?.width"
+    [alignment]="column?.alignment"
+    [type]="column?.type"
+    [customizeText]="column?.customizeText"
+  >
+    <dxo-lookup
+      *ngIf="column?.lookup"
+      [dataSource]="column?.lookup?.dataSource"
+      [displayExpr]="column?.lookup?.displayExpr"
+      [valueExpr]="column?.lookup?.valueExpr"
+    >
+    </dxo-lookup>
+
+    <dxi-button
+      *ngFor="let button of column?.buttons"
+      [name]="button?.name"
+      [icon]="button?.icon"
+      [cssClass]="button?.cssClass"
+    ></dxi-button>
+
+    <dxo-form-item
+      *ngIf="column?.formItem"
+      [colSpan]="column?.formItem?.colSpan"
+      [label]="column?.formItem?.label"
+      [editorOptions]="column?.formItem?.editorOptions"
+      [editorType]="column?.formItem?.editorType"
+      [isRequired]="column?.formItem?.isRequired"
+      [visible]="column?.formItem?.visible"
+    >
+    </dxo-form-item>
+  </dxi-column>
+  <div
+    *dxTemplate="let box of 'checkedTemplate'"
+    [ngStyle]="{ 'pointer-events': 'none' }"
+  >
+    <dx-check-box
+      *ngIf="isSelected(box.value)"
+      [value]="isSelected(box.value)"
+    ></dx-check-box>
+  </div>
+
+  <div *dxTemplate="let column of 'phoneTemplate'">
+    {{ column.value | phone }}
+  </div>
+</dx-data-grid>

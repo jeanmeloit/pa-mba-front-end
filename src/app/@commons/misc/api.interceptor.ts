@@ -128,7 +128,7 @@ export class APIInterceptor implements HttpInterceptor {
     if (err.status === unauthorized || err.status === forbidden) {
       messages.push({ type: 'warning', message: 'Por favor, efetue o login' })
       localStorage.setItem('error', JSON.stringify(messages))
-      this.router.navigate([`/login`], {
+      this.router.navigate([`auth/login`], {
         queryParams: { returnUrl: this.router.url },
       })
     }
@@ -136,14 +136,14 @@ export class APIInterceptor implements HttpInterceptor {
     if (err.status === unreachable) {
       messages.push({ type: 'danger', message: 'Servidor não encontrado' })
       localStorage.setItem('error', JSON.stringify(messages))
-      this.router.navigate(['/login'], {
+      this.router.navigate(['/auth/login'], {
         queryParams: { returnUrl: this.router.url },
       })
     }
 
     if (err.status === serverError) {
       localStorage.setItem('error', JSON.stringify(messages))
-      this.router.navigate(['/login'], {
+      this.router.navigate(['/auth/login'], {
         queryParams: { returnUrl: this.router.url },
       })
     }

@@ -5,5 +5,6 @@ export interface ToastrMessageInterface {
   error?: boolean
   message?: string
   title?: string
-  type?: string
+  type?: 'success' | 'info' | 'warning' | 'danger' | 'default'
+  customDuration?: number
 }

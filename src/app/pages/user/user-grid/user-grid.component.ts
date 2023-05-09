@@ -6,19 +6,20 @@ import {
 } from '@panther/interfaces/column-interface'
 import { DxDataGridComponent } from 'devextreme-angular'
 import { Subscription } from 'rxjs'
-import { finalize } from 'rxjs/operators'
+import { finalize, map } from 'rxjs/operators'
 
-import { Student } from '../interfaces/student.interface'
-import { StudentService } from './student.service'
+import { AccessLevelEnum } from '../../../auth/enums/access-level.enum'
+import { User } from '../../../auth/interfaces/user.interface'
+import { UserService } from '../services/user.service'
 
 @Component({
-  selector: 'pds-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.scss'],
+  selector: 'pds-user-grid',
+  templateUrl: './user-grid.component.html',
+  styleUrls: ['./user-grid.component.scss'],
 })
-export class StudentComponent implements OnInit, OnDestroy {
+export class UserGridComponent implements OnInit, OnDestroy {
   public loading: boolean = false
-  public gridData: Student[] = []
+  public gridData: User[] = []
   public columns: DxColumnInterface[] = []
   public formItems: DxFormItemInterface[] = []
   public selected: any[]
@@ -31,7 +32,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   @ViewChild(DxDataGridComponent, { static: false })
   public grid: DxDataGridComponent
 
-  constructor(private service: StudentService, private toastr: ToastrService) {}
+  constructor(private service: UserService, private toastr: ToastrService) {}
 
   public ngOnInit(): void {
     this.fetchGrid()
@@ -47,9 +48,13 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.loading = true
     this.subscription = this.service
       .get()
-      .pipe(finalize(() => (this.loading = false)))
+      .pipe(
+        finalize(() => (this.loading = false)),
+        map((users: User[]) => users.map(this.handleUser.bind(this))),
+      )
+
       .subscribe(
-        (data: Student[]) => {
+        (data: User[]) => {
           this.gridData = data
         },
         (err: any) => {
@@ -59,6 +64,11 @@ export class StudentComponent implements OnInit, OnDestroy {
           })
         },
       )
+  }
+
+  private handleUser(user): User {
+    user.canAcessTill = new Date(user.canAcessTill)
+    return user
   }
 
   private getColumns(): DxColumnInterface[] {
@@ -93,9 +103,48 @@ export class StudentComponent implements OnInit, OnDestroy {
       },
       {
         caption: 'E-mail',
-        dataField: 'mail',
+        dataField: 'email',
         allowSorting: true,
         allowHeaderFiltering: true,
+      },
+      {
+        caption: 'Senha',
+        dataField: 'password',
+        allowSorting: false,
+        allowHeaderFiltering: false,
+        customizeText: function () {
+          return '********'
+        },
+      },
+      {
+        caption: 'Nível de acesso',
+        dataField: 'accessLevel',
+        formItem: {
+          isRequired: true,
+        },
+        lookup: {
+          dataSource: [
+            {
+              key: AccessLevelEnum.MANAGER,
+              value: 'Gestor',
+            },
+            {
+              key: AccessLevelEnum.STUDENT,
+              value: 'Aluno',
+            },
+            {
+              key: AccessLevelEnum.GUEST,
+              value: 'Visitante',
+            },
+          ],
+          displayExpr: 'value',
+          valueExpr: 'key',
+        },
+      },
+      {
+        caption: 'Pode acessar até?',
+        dataField: 'canAccessTill',
+        dataType: 'datetime',
       },
       {
         caption: 'Ações',
@@ -124,7 +173,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         children: [
           {
             dataField: 'name',
-            colSpan: 8,
+            colSpan: 6,
             isRequired: true,
             editorOptions: { maxLength: '100', inputAttr: { id: 'name' } },
             label: {
@@ -134,7 +183,7 @@ export class StudentComponent implements OnInit, OnDestroy {
           {
             dataField: 'phone',
             isRequired: true,
-            colSpan: 4,
+            colSpan: 3,
             editorOptions: {
               mask: '(00) 9 0000-0000',
               showMaskMode: 'onFocus',
@@ -146,7 +195,7 @@ export class StudentComponent implements OnInit, OnDestroy {
           },
           {
             dataField: 'age',
-            colSpan: 4,
+            colSpan: 3,
             editorOptions: {
               inputAttr: { id: 'age' },
               max: 150,
@@ -157,10 +206,10 @@ export class StudentComponent implements OnInit, OnDestroy {
             },
           },
           {
-            dataField: 'mail',
-            colSpan: 8,
+            dataField: 'email',
+            colSpan: 6,
             isRequired: true,
-            editorOptions: { maxLength: '100', inputAttr: { id: 'mail' } },
+            editorOptions: { maxLength: '100', inputAttr: { id: 'email' } },
             validationRules: [
               {
                 type: 'pattern',
@@ -177,6 +226,35 @@ export class StudentComponent implements OnInit, OnDestroy {
               visible: false,
             },
           },
+          {
+            dataField: 'password',
+            colSpan: 3,
+            isRequired: true,
+            editorOptions: {
+              mode: 'password',
+              maxLength: '100',
+              inputAttr: { id: 'password' },
+            },
+            label: {
+              visible: false,
+            },
+          },
+          {
+            dataField: 'accessLevel',
+            isRequired: true,
+            colSpan: 3,
+            label: {
+              visible: false,
+            },
+          },
+          {
+            dataField: 'canAccessTill',
+            isRequired: true,
+            colSpan: 3,
+            label: {
+              visible: false,
+            },
+          },
         ],
       },
     ]
@@ -185,9 +263,9 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   public onToolbarPreparing(event: any): void {
     event.toolbarOptions.items[this.isDialog ? 0 : 1].showText = 'ever'
-    event.toolbarOptions.items[this.isDialog ? 0 : 1].options.text = 'Aluno'
+    event.toolbarOptions.items[this.isDialog ? 0 : 1].options.text = 'Usuário'
     event.toolbarOptions.items[this.isDialog ? 0 : 1].options.hint =
-      'Novo Aluno'
+      'Novo Usuário'
 
     event.toolbarOptions.items.forEach((item: any, index) => {
       if (item.options) {
@@ -222,7 +300,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         () => {
           this.toastr.send({
             type: 'success',
-            message: 'Aluno inserido com sucesso.',
+            message: 'Usuário inserido com sucesso.',
           })
         },
         (err: any) => {
@@ -241,6 +319,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   public onRowUpdating(event: any): void {
+    console.log(event)
     this.subscription = this.service
       .put({ uuid: event.key, ...event.newData })
       .pipe(finalize(() => (this.loading = false)))
@@ -248,7 +327,7 @@ export class StudentComponent implements OnInit, OnDestroy {
         () => {
           this.toastr.send({
             type: 'success',
-            message: 'O aluno ' + event.oldData.name + ' foi atualizado.',
+            message: 'O usuário ' + event.oldData.name + ' foi atualizado.',
           })
         },
         (err: any) => {
@@ -271,7 +350,7 @@ export class StudentComponent implements OnInit, OnDestroy {
       () => {
         this.toastr.send({
           type: 'success',
-          message: 'Aluno ' + event.data.name + ' excluído com sucesso.',
+          message: 'Usuário ' + event.data.name + ' excluído com sucesso.',
         })
       },
       (resp: any) => this.toastr.bulkSend(resp.mensagens),

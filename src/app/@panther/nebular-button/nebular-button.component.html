@@ -1,5 +1,6 @@
 <button
   *ngIf="buttonVisible"
+  [type]="nativeType"
   [appearance]="buttonAppearance"
   [status]="buttonType"
   [shape]="buttonShape"
@@ -14,7 +15,7 @@
 >
   <i
     *ngIf="buttonIconVisible"
-    [ngClass]="{'mr-1': buttonText}"
+    [ngClass]="{ 'mr-1': buttonText }"
     class="{{ buttonIcon }}"
   ></i>
   {{ buttonText }}

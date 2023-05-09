@@ -1,0 +1,92 @@
+<h1 id="title" class="title">Registre-se</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" aria-labelledby="title">
+  <div class="form-group">
+    <pds-nebular-input
+      [style]="'basic'"
+      [type]="'text'"
+      [shape]="'semi-round'"
+      formControlName="name"
+      name="name"
+      label="Nome"
+      placeholder="Nome"
+      [required]="true"
+      errorMessage="É obrigatório preencher o nome"
+    >
+    </pds-nebular-input>
+  </div>
+
+  <div class="form-group">
+    <pds-nebular-input
+      [style]="'basic'"
+      [type]="'number'"
+      [shape]="'semi-round'"
+      maxlength="3"
+      formControlName="age"
+      name="age"
+      label="Idade"
+      placeholder="Idade"
+      [required]="true"
+      errorMessage="É obrigatório preencher a idade"
+    >
+    </pds-nebular-input>
+  </div>
+
+  <div class="form-group">
+    <pds-nebular-input
+      [style]="'basic'"
+      [type]="'text'"
+      [shape]="'semi-round'"
+      [primaryMask]="{ mask: phoneMask, guide: false }"
+      formControlName="phone"
+      name="phone"
+      label="Telefone"
+      placeholder="Telefone"
+      [required]="true"
+      errorMessage="É obrigatório preencher o telefone"
+    >
+    </pds-nebular-input>
+  </div>
+
+  <div class="form-group">
+    <pds-nebular-input
+      [style]="'basic'"
+      [type]="'text'"
+      [shape]="'semi-round'"
+      [pattern]="'.+@.+\..+'"
+      formControlName="email"
+      name="email"
+      label="E-mail"
+      placeholder="E-mail"
+      required
+      errorMessage="É obrigatório preencher o usuário"
+      invalidMessage="Forneça um endereço de e-mail válido"
+    >
+    </pds-nebular-input>
+  </div>
+
+  <div class="form-group">
+    <pds-nebular-input
+      [style]="'basic'"
+      [type]="'password'"
+      [shape]="'semi-round'"
+      formControlName="password"
+      name="senha"
+      label="Senha"
+      placeholder="Senha"
+      required
+      errorMessage="É obrigatório preencher a senha"
+    >
+    </pds-nebular-input>
+  </div>
+
+  <button
+    nbButton
+    fullWidth
+    status="primary"
+    [disabled]="!form.valid"
+    [class.btn-pulse]="true"
+  >
+    Enviar
+  </button>
+</form>

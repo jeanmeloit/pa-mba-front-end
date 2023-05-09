@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { PersonComponent } from './person.component'
 import { StudentListComponent } from './student-list/student-list.component'
-import { StudentComponent } from './student/student.component'
+import { StudentGridComponent } from './student-grid/student-grid.component'
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     component: PersonComponent,
     children: [
       { path: 'aluno', component: StudentListComponent },
-      { path: 'aluno/:id', component: StudentComponent },
+      { path: 'aluno/:id', component: StudentGridComponent },
     ],
   },
 ]

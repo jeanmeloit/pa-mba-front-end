@@ -56,6 +56,8 @@ export class ToastrService {
       ...toastrPropsByType[toastr.type],
     }
 
+    if (toastr.customDuration) toastrPrefs.duration = toastr.customDuration
+
     this.nbToastr.show(
       toastr.message,
       toastr.title || toastrPrefs.title,

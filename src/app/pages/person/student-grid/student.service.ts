@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { BaseService } from '@commons/services/base/base.service'
-
-import { Student } from '../interfaces/student.interface'
+import { Student } from '@pages/person/interfaces/student.interface'
 
 @Injectable({
   providedIn: 'root',

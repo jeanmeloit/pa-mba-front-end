@@ -19,6 +19,9 @@ export class NebularButtonComponent implements OnInit {
   public buttonIcon: string
 
   @Input()
+  public nativeType: NbComponentStatus
+
+  @Input()
   public buttonType: NbComponentStatus = 'primary'
 
   @Input()

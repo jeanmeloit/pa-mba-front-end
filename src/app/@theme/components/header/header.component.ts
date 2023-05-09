@@ -4,7 +4,6 @@ import { Router } from '@angular/router'
 import { DefaultConfiguration } from '@config/configuration'
 import { LayoutService } from '@core/utils'
 import { RippleService } from '@core/utils/ripple.service'
-import { UserDataInterface } from '@guards/services/user-data'
 import {
   NbMediaBreakpointsService,
   NbMenuItem,
@@ -18,6 +17,7 @@ import { refreshTheme } from 'devextreme/viz/themes'
 import { Observable, Subject } from 'rxjs'
 import { first, map, takeUntil } from 'rxjs/operators'
 
+import { User } from '../../../auth/interfaces/user.interface'
 import { LoginService } from './../../../auth/services/login.service'
 
 @Component({
@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public themeMenu: NbMenuItem[] = DefaultConfiguration.header.themeMenu
 
-  public userData: UserDataInterface
+  public userData: User
   public config: any
 
   public constructor(
@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.config = DefaultConfiguration
-    // this.userData = this.userDataService.userData
+    this.userData = this.loginService.currentUserValue
 
     this.initializeThemeControls()
 
@@ -200,6 +200,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private redirectToLogout(): void {
     this.loginService.logout()
-    this.router.navigate(['/login'])
+    this.router.navigate(['/auth/login'])
   }
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./class-list.component.scss'],
 })
 export class ClassListComponent implements OnInit {
-  public pageTitle: string = 'Turma'
+  public pageTitle: string = 'Turmas'
 
   constructor() {}
 
